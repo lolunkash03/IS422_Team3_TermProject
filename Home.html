@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCM Website</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <style>
+    :root {
+      --navy: #0f2a44;
+      --gold: #bf9569;
+      --ink: #1f3550;
+      --soft-gray: #e9e9ea;
+    }
+
+    body {
+      color: var(--ink);
+      background: var(--soft-gray);
+    }
+
+    .navbar.is-dark {
+      background: var(--navy);
+    }
+
+    .navbar .navbar-item, .navbar-brand .navbar-item {
+      color: #e8f1ff;
+    }
+
+    .navbar .navbar-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Hero background fade */
+    .hero-split {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: linear-gradient(to right, rgba(0,0,0,0.5) 30%, var(--soft-gray) 80%), url('https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: left center;
+    }
+
+    .hero-split .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .headline-xl {
+      font-size: 3rem;
+      line-height: 1.05;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    @media(max-width:1024px) {
+      .headline-xl { font-size: 2.25rem; }
+    }
+
+    .subcopy {
+      color: #f0f0f0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .cta-primary.button {
+      background: var(--gold);
+      border-color: transparent;
+      color: white;
+      font-weight: 700;
+    }
+
+    .cta-primary.button:hover {
+      filter: brightness(0.95);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <strong>MCM</strong>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasic" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="index.html">Home</a>
+        <a class="navbar-item" href="about.html">About</a>
+        <a class="navbar-item" href="blog.html">Blog</a>
+        <a class="navbar-item" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero with background image fade -->
+  <section class="section hero-split">
+    <div class="container">
+      <div class="columns is-vcentered is-variable is-7">
+        <div class="column is-6">
+          <h1 class="headline-xl">
+            Reclaim your identity.<br>
+            Realign your energy.<br>
+            Build your legacy—without leaving the 9–5.
+          </h1>
+          <p class="mt-5 content is-medium subcopy">
+            You’ve checked the boxes—job, income, structure—but something still feels… off.
+            You’re not broken. You’re just in the wrong gear.
+          </p>
+          <div class="mt-6">
+            <a class="button cta-primary is-medium">Start Your Next Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Latest Highlights</h2>
+      <div class="columns">
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">Podcast Episode</p>
+              <p class="subtitle">Listen to our latest insights</p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">Community Spotlight</p>
+              <p class="subtitle">Meet inspiring members of MCM</p>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-content">
+              <p class="title">Free Resources</p>
+              <p class="subtitle">Access our exclusive materials</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p><strong>MCM</strong> by Team Innovate | &copy; 2025. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.navbar-burger');
+      const menu = document.getElementById('navbarBasic');
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+      });
+    });
+  </script>
+</body>
+</html>
