@@ -1,170 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCM Website</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <style>
-    :root {
-      --navy: #042a4d;
-      --dark_gold: #b08d57;
-      --ink: #282828;
-      --ink2:#2e2e2e;
-      --soft-gray: #edeae3;
-      --light-gold: #c49a6c;
-      /*  accent colors for emphasizing */
-      --bright-yellow: #ffc71f;
-      --forest-green: #4f704d;
-      --green: #4c8c4a;
-      --bluer-navy: 2a3d66;
-    }
-      body {
-        color: var(--ink);
-        background: var(--soft-gray);
-      }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="MCM — Reclaim your identity. Realign your energy. Build your legacy—without leaving the 9–5."
+    />
+    <title>MCM — Home</ti~tle>
 
-      .navbar.is-dark {
-        background: var(--navy);
-      }
-
-      .navbar .navbar-item,
-      .navbar-brand .navbar-item {
-        color: #e8f1ff;
-      }
-
-      .navbar .navbar-item:hover {
-        background: rgba(255, 255, 255, 0.06);
-      }
-    .footer.isyellow {
-      background-color: var(--dark_gold);
-      color: white; 
-    }
-
-    /* Hero background fade */
-    .hero-split {
-      position: relative;
-      overflow: hidden;
-      color: #fff;
-      background: linear-gradient(to right, rgba(0,0,0,0.5) 30%, var(--soft-gray) 80%), url('https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1600&auto=format&fit=crop');
-      background-size: cover;
-      background-position: left center;
-    }
-      .hero-split .container {
-        position: relative;
-        z-index: 2;
-      }
-
-      .headline-xl {
-        font-size: 3rem;
-        line-height: 1.05;
-        font-weight: 800;
-        color: #fff;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-      }
-
-      @media (max-width: 1024px) {
-        .headline-xl {
-          font-size: 2.25rem;
-        }
-      }
-
-      .subcopy {
-        color: #f0f0f0;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-      }
-
-    .cta-primary.button {
-      background: var(--dark_gold);
-      border-color: transparent;
-      color: white;
-      font-weight: 700;
-    }
-
-      .cta-primary.button:hover {
-        filter: brightness(0.95);
-      }
-    </style>
+    <!-- Bulma -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="Home.html">
-          <strong>MCM</strong>
-        </a>
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasic"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasic" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item" href="Home.html">Home</a>
-          <a class="navbar-item" href="about.html">About</a>
-          <a class="navbar-item" href="blog.html">Blog</a>
-          <a class="navbar-item" href="contact.html">Contact</a>
+    <!-- Header / Navbar -->
+    <header>
+      <nav
+        class="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a
+            class="navbar-item brand-logo-link"
+            href="Home.html"
+            aria-current="page"
+            aria-label="MCM — Home"
+          >
+            <img
+              src="images/logo_white_gold_blue.png"
+              alt="MCM home"
+              class="brand-logo"
+              loading="eager"
+            />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasic"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-      </div>
-    </nav>
 
-    <!-- Hero with background image fade -->
-    <section class="section hero-split">
-      <div class="container">
-        <div class="columns is-vcentered is-variable is-7">
-          <div class="column is-6">
-            <h1 class="headline-xl">
-              Reclaim your identity.<br />
-              Realign your energy.<br />
-              Build your legacy—without leaving the 9–5.
-            </h1>
-            <p class="mt-5 content is-medium subcopy">
-              You’ve checked the boxes—job, income, structure—but something
-              still feels… off. You’re not broken. You’re just in the wrong
-              gear.
-            </p>
-            <div class="mt-6">
-              <a class="button cta-primary is-medium"
-                >Start Your Next Chapter</a
-              >
+        <div id="navbarBasic" class="navbar-menu">
+          <div class="navbar-end">
+            <a
+              class="navbar-item active-page"
+              href="Home.html"
+              aria-current="page"
+              >Home</a
+            >
+            <a class="navbar-item" href="about.html">About</a>
+            <a class="navbar-item" href="blog.html">Blog</a>
+            <a class="navbar-item" href="Contact.html">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Full width hero split layout -->
+      <!-- Full width hero split layout using Bulma -->
+      <section class="hero-full-width">
+        <div class="columns is-gapless is-vcentered is-desktop">
+          <!-- Image column on the left - full height -->
+          <div class="column is-half-desktop">
+            <div class="hero-image-full">
+              <img
+                src="/images/brand_profile1.png"
+                alt="Professional at work"
+                class="image is-fullwidth is-fullheight"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <!-- Text content on the right - full height -->
+          <div class="column is-half-desktop">
+            <div class="hero-content-full">
+              <h1 class="title is-1 has-text-weight-bold has-text-navy mb-5">
+                Reclaim your identity.<br />
+                Realign your energy.<br />
+                Build your legacy—without leaving the 9–5.
+              </h1>
+              <p class="subtitle is-4 has-text-dark mb-4">
+                You've checked the boxes—job, income, structure—but something
+                still feels… off.
+              </p>
+              <p class="subtitle is-4 has-text-dark mb-5">
+                You're not broken. You're just in the wrong gear.
+              </p>
+              <div class="mt-6">
+                <a
+                  class="button cta-primary is-large"
+                  href="#start"
+                  aria-label="Start Your Next Chapter"
+                >
+                  Start Your Next Chapter
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-  <footer class="footer" >
-    <div class="content has-text-centered">
-      <p><strong>MCM</strong> by Team Innovate | &copy; 2025. All rights reserved.</p>
-    </div>
-  </footer>
+      <!-- Meet Your Mentor Section -->
+      <section class="section py-6">
+        <div class="container">
+          <div class="columns is-vcentered is-variable is-6">
+            <!-- Text content -->
+            <div class="column is-6">
+              <div class="content pr-4">
+                <h2 class="title is-2 has-text-weight-bold has-text-navy mb-4">
+                  Meet your mentor: Dawnell Kelly
+                </h2>
+                <p
+                  class="subtitle is-5 has-text-gold has-text-weight-semibold mb-4"
+                >
+                  This mission is personal.
+                </p>
+                <p class="is-size-5 has-text-dark mb-4">
+                  I was that veteran who isolated so deeply... I ended up alone
+                  with a mattress on the floor.
+                </p>
+                <p class="is-size-5 has-text-dark mb-4">
+                  Then I got sick with a sudden onset of undiagnosed seizures. I
+                  didn't even know something was wrong until I collapsed one
+                  time in public.
+                </p>
+                <p class="is-size-5 has-text-dark mb-4">
+                  It nearly cost me everything.
+                </p>
+                <p
+                  class="is-size-5 has-text-navy has-text-weight-semibold mt-5"
+                >
+                  Now, I guide veterans to discover their identity, purpose, and
+                  voice—before the pressure turns into pain.
+                </p>
+                <div class="mt-5">
+                  <a class="button is-medium cta-primary" href="#meet-dawnell">
+                    Meet Dawnell
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Image on the right -->
+            <div class="column is-6">
+              <div class="stats-image-container">
+                <img
+                  src="/images/brand_profile2.png"
+                  alt="Professional finding purpose"
+                  class="stats-image"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <footer class="footer">
+      <section class="stats-section">
+        <div class="container">
+          <div class="columns is-vcentered is-variable is-6">
+            <!-- Content on the left -->
+            <div class="column is-6">
+              <div class="stats-container">
+                <div class="stats-content">
+                  <div class="stat-row">
+                    <span class="stat-label">JOB...</span>
+                    <span class="stat-check">✔</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">FAMILY...</span>
+                    <span class="stat-check">✔</span>
+                  </div>
+                  <div class="stat-row">
+                    <span class="stat-label">BENEFITS...</span>
+                    <span class="stat-check">✔</span>
+                  </div>
+                </div>
+
+                <div class="question-content">
+                  <h3 class="question-title">
+                    You've Done Everything Right—But It Still Feels Off
+                  </h3>
+                  <p class="question-subtitle">
+                    So why does it still feel like something's missing?
+                  </p>
+                  <p class="question-answer">
+                    It's not you.<br />It's the system you've landed in.
+                  </p>
+                  <p class="question-closing">
+                    Most veteran support ends at "get the job."<br />But no one
+                    talks about what comes after...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Embedded image on the right -->
+            <div class="column is-6">
+              <div class="embedded-image-container">
+                <img
+                  src="images/civilian_cycle.png"
+                  alt="Professional finding purpose"
+                  class="embedded-image"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer isyellow">
       <div class="content has-text-centered">
         <p>
-          <strong>MCM</strong> by Team Innovate | &copy; 2025. All rights
-          reserved.
+          <strong>MCM</strong> by Team 3 IS424 &nbsp;|&nbsp; &copy; 2025. All
+          rights reserved.
         </p>
       </div>
     </footer>
 
     <script>
-      // Mobile menu toggle
+      // Mobile menu toggle with null checks
       document.addEventListener("DOMContentLoaded", () => {
         const burger = document.querySelector(".navbar-burger");
         const menu = document.getElementById("navbarBasic");
-        burger.addEventListener("click", () => {
-          burger.classList.toggle("is-active");
-          menu.classList.toggle("is-active");
-        });
+        if (burger && menu) {
+          burger.addEventListener("click", () => {
+            burger.classList.toggle("is-active");
+            menu.classList.toggle("is-active");
+            const expanded = burger.getAttribute("aria-expanded") === "true";
+            burger.setAttribute("aria-expanded", String(!expanded));
+          });
+        }
       });
     </script>
   </body>
