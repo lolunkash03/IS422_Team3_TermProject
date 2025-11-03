@@ -92,13 +92,11 @@
           <div class="columns is-vcentered">
             <div class="column is-6">
               <h1 class="title is-2 has-text-weight-bold has-text-navy">
-                Sprint 2 — Firebase Authentication
+                Welcome to MY BLOG!
               </h1>
               <p class="subtitle is-5" style="color: var(--ink)">
-                This sprint focuses on adding user authentication:
-                <strong>Sign Up</strong>, <strong>Sign In</strong>, and
-                <strong>Sign Out</strong>, with a personalized welcome message
-                after login.
+                Scroll Down to <strong>Sign Up</strong> or
+                <strong>Sign In</strong>! Stay Updated to our Content!
               </p>
               <a class="button cta-primary is-medium" href="#auth"
                 >Try It Now</a
@@ -107,7 +105,7 @@
             <div class="column is-6">
               <figure class="image">
                 <img
-                  src="images/civilian_cycle.png"
+                  src="images/brand_profile1.png"
                   alt="Civilian Stability Cycle"
                   loading="lazy"
                 />
@@ -321,6 +319,7 @@
 
     <!-- Firebase Authentication Logic -->
     <script type="module">
+      // Use ESM CDN imports for browsers (no bundler)
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
       import {
         getAuth,
@@ -329,16 +328,26 @@
         signInWithEmailAndPassword,
         signOut,
       } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+      // (Optional) Analytics — only if you want it
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
 
-      // Replace this with your Firebase config
+      // Your Firebase config (keep exactly as the console shows)
       const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_AUTH_DOMAIN",
-        projectId: "YOUR_PROJECT_ID",
-        appId: "YOUR_APP_ID",
+        apiKey: "AIzaSyBeFawpN7RtHgCVoJWXtPVbLO3iU8gz8xQ",
+        authDomain: "is424-term-project.firebaseapp.com",
+        projectId: "is424-term-project",
+        storageBucket: "is424-term-project.appspot.com", // <- verify in console; adjust if needed
+        messagingSenderId: "571020263691",
+        appId: "1:571020263691:web:73fb6c4519dff2caf0e20e",
+        measurementId: "G-FL49EFV0B1",
       };
 
+      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+      // Optional analytics (safe to remove if not used)
+      getAnalytics(app);
+
+      // Initialize Auth
       const auth = getAuth(app);
 
       // DOM elements
@@ -365,12 +374,13 @@
           : "";
         welcomeSection.style.display = isSignedIn ? "" : "none";
         if (isSignedIn) {
-          navUserEmail.textContent = email;
-          welcomeUserEmail.textContent = email;
+          if (navUserEmail) navUserEmail.textContent = email;
+          if (welcomeUserEmail) welcomeUserEmail.textContent = email;
         }
       }
 
       function showError(el, msg) {
+        if (!el) return;
         el.textContent = msg;
         el.style.display = msg ? "" : "none";
       }
@@ -383,11 +393,12 @@
           "auth/email-already-in-use": "This email is already registered.",
           "auth/user-not-found": "No account found with this email.",
           "auth/wrong-password": "Incorrect email or password.",
+          "auth/invalid-credential": "Incorrect email or password.",
         };
         return errors[code] || "Authentication error. Please try again.";
       }
 
-      // Auth state observer
+      // Observe auth state
       onAuthStateChanged(auth, (user) => {
         if (user && user.email) {
           toggleAuthUI(true, user.email);
@@ -404,8 +415,10 @@
         const password = document.getElementById("signInPassword").value;
         try {
           await signInWithEmailAndPassword(auth, email, password);
+          // UI flips via onAuthStateChanged
         } catch (err) {
           showError(signInError, mapError(err.code));
+          console.error(err);
         }
       });
 
@@ -417,21 +430,23 @@
         const password = document.getElementById("signUpPassword").value;
         try {
           await createUserWithEmailAndPassword(auth, email, password);
+          // UI flips via onAuthStateChanged
         } catch (err) {
           showError(signUpError, mapError(err.code));
+          console.error(err);
         }
       });
 
-      // Sign Out
+      // Sign Out (both buttons)
       async function handleSignOut(e) {
         e.preventDefault();
         try {
           await signOut(auth);
-        } catch {
+        } catch (err) {
           alert("Sign out failed. Please try again.");
+          console.error(err);
         }
       }
-
       signOutBtn?.addEventListener("click", handleSignOut);
       inlineSignOutBtn?.addEventListener("click", handleSignOut);
     </script>
