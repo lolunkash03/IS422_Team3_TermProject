@@ -1,6 +1,6 @@
 # IS422_Team3_TermProject
 
-Sprint Forecast & Backlog
+**Sprint Forecast & Backlog**
 
 Sprint Goal:
  The goal for this sprint was to implement user authentication and integrate it with each page. Users can now create accounts, sign in, and sign out through a Firestore-backed authentication system. When a user is signed in, their information is stored in the database, and the sign-in form is hidden to reflect their active session.
