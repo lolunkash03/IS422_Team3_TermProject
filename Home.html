@@ -17,233 +17,561 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Header / Navbar -->
-    <header>
-      <nav
-        class="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <a
-            class="navbar-item brand-logo-link"
-            href="Home.html"
-            aria-current="page"
-            aria-label="MCM — Home"
-          >
-            <img
-              src="images/logo_white_gold_blue.png"
-              alt="MCM home"
-              class="brand-logo"
-              loading="eager"
-            />
-          </a>
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasic"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasic" class="navbar-menu">
-          <div class="navbar-end">
+    <div id="authArea">
+      <!-- Header / Navbar -->
+      <header>
+        <nav
+          class="navbar is-dark"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
             <a
-              class="navbar-item active-page"
+              class="navbar-item brand-logo-link"
               href="Home.html"
               aria-current="page"
-              >Home</a
+              aria-label="MCM — Home"
             >
-            <a class="navbar-item" href="about.html">About</a>
-            <a class="navbar-item" href="Blog.html">Blog</a>
-            <a class="navbar-item" href="Contact.html">Contact</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <!-- Full width hero split layout -->
-      <!-- Full width hero split layout using Bulma -->
-      <section class="hero-full-width">
-        <div class="columns is-gapless is-vcentered is-desktop">
-          <!-- Image column on the left - full height -->
-          <div class="column is-half-desktop">
-            <div class="hero-image-full">
               <img
-                src="/images/brand_profile1.png"
-                alt="Professional at work"
-                class="image is-fullwidth is-fullheight"
+                src="images/logo_white_gold_blue.png"
+                alt="MCM home"
+                class="brand-logo"
                 loading="eager"
               />
-            </div>
+            </a>
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasic"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
 
-          <!-- Text content on the right - full height -->
-          <div class="column is-half-desktop">
-            <div class="hero-content-full">
-              <h1 class="title is-1 has-text-weight-bold has-text-navy mb-5">
-                Reclaim your identity.<br />
-                Realign your energy.<br />
-                Build your legacy—without leaving the 9–5.
-              </h1>
-              <p class="subtitle is-4 has-text-dark mb-4">
-                You've checked the boxes—job, income, structure—but something
-                still feels… off.
-              </p>
-              <p class="subtitle is-4 has-text-dark mb-5">
-                You're not broken. You're just in the wrong gear.
-              </p>
-              <div class="mt-6">
-                <a
-                  class="button cta-primary is-large"
-                  href="#start"
-                  aria-label="Start Your Next Chapter"
-                >
-                  Start Your Next Chapter
-                </a>
+          <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-end">
+              <a
+                class="navbar-item active-page"
+                href="Home.html"
+                aria-current="page"
+                >Home</a
+              >
+              <a class="navbar-item" href="about.html">About</a>
+              <a class="navbar-item" href="Blog.html">Blog</a>
+              <a class="navbar-item" href="Contact.html">Contact</a>
+              <!-- Signed-out -->
+              <a class="navbar-item" href="#auth" data-auth="signed-out"
+                >Sign In</a
+              >
+              <a class="navbar-item" href="#auth" data-auth="signed-out"
+                >Sign Up</a
+              >
+
+              <!-- Signed-in -->
+              <span
+                class="navbar-item has-text-gold"
+                data-auth="signed-in"
+                style="display: none"
+              >
+                Welcome, <span id="navUserEmail">User</span>
+              </span>
+              <a
+                class="navbar-item"
+                href="#"
+                id="signOutBtn"
+                data-auth="signed-in"
+                style="display: none"
+                >Sign Out</a
+              >
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <!-- Full width hero split layout -->
+        <!-- Full width hero split layout using Bulma -->
+        <section class="hero-full-width">
+          <div class="columns is-gapless is-vcentered is-desktop">
+            <!-- Image column on the left - full height -->
+            <div class="column is-half-desktop">
+              <div class="hero-image-full">
+                <img
+                  src="/images/brand_profile1.png"
+                  alt="Professional at work"
+                  class="image is-fullwidth is-fullheight"
+                  loading="eager"
+                />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Meet Your Mentor Section -->
-      <section class="section py-6">
-        <div class="container">
-          <div class="columns is-vcentered is-variable is-6">
-            <!-- Text content -->
-            <div class="column is-6">
-              <div class="content pr-4">
-                <h2 class="title is-2 has-text-weight-bold has-text-navy mb-4">
-                  Meet your mentor: Dawnell Kelly
-                </h2>
-                <p
-                  class="subtitle is-5 has-text-gold has-text-weight-semibold mb-4"
-                >
-                  This mission is personal.
+            <!-- Text content on the right - full height -->
+            <div class="column is-half-desktop">
+              <div class="hero-content-full">
+                <h1 class="title is-1 has-text-weight-bold has-text-navy mb-5">
+                  Reclaim your identity.<br />
+                  Realign your energy.<br />
+                  Build your legacy—without leaving the 9–5.
+                </h1>
+                <p class="subtitle is-4 has-text-dark mb-4">
+                  You've checked the boxes—job, income, structure—but something
+                  still feels… off.
                 </p>
-                <p class="is-size-5 has-text-dark mb-4">
-                  I was that veteran who isolated so deeply... I ended up alone
-                  with a mattress on the floor.
+                <p class="subtitle is-4 has-text-dark mb-5">
+                  You're not broken. You're just in the wrong gear.
                 </p>
-                <p class="is-size-5 has-text-dark mb-4">
-                  Then I got sick with a sudden onset of undiagnosed seizures. I
-                  didn't even know something was wrong until I collapsed one
-                  time in public.
-                </p>
-                <p class="is-size-5 has-text-dark mb-4">
-                  It nearly cost me everything.
-                </p>
-                <p
-                  class="is-size-5 has-text-navy has-text-weight-semibold mt-5"
-                >
-                  Now, I guide veterans to discover their identity, purpose, and
-                  voice—before the pressure turns into pain.
-                </p>
-                <div class="mt-5">
-                  <a class="button is-medium cta-primary" href="#meet-dawnell">
-                    Meet Dawnell
+                <div class="mt-6">
+                  <a
+                    class="button cta-primary is-large"
+                    href="#start"
+                    aria-label="Start Your Next Chapter"
+                  >
+                    Start Your Next Chapter
                   </a>
                 </div>
               </div>
             </div>
-            <!-- Image on the right -->
-            <div class="column is-6">
-              <div class="stats-image-container">
-                <img
-                  src="/images/brand_profile2.png"
-                  alt="Professional finding purpose"
-                  class="stats-image"
-                  loading="lazy"
-                />
+          </div>
+        </section>
+
+        <!-- Meet Your Mentor Section -->
+        <section class="section py-6">
+          <div class="container">
+            <div class="columns is-vcentered is-variable is-6">
+              <!-- Text content -->
+              <div class="column is-6">
+                <div class="content pr-4">
+                  <h2
+                    class="title is-2 has-text-weight-bold has-text-navy mb-4"
+                  >
+                    Meet your mentor: Dawnell Kelly
+                  </h2>
+                  <p
+                    class="subtitle is-5 has-text-gold has-text-weight-semibold mb-4"
+                  >
+                    This mission is personal.
+                  </p>
+                  <p class="is-size-5 has-text-dark mb-4">
+                    I was that veteran who isolated so deeply... I ended up
+                    alone with a mattress on the floor.
+                  </p>
+                  <p class="is-size-5 has-text-dark mb-4">
+                    Then I got sick with a sudden onset of undiagnosed seizures.
+                    I didn't even know something was wrong until I collapsed one
+                    time in public.
+                  </p>
+                  <p class="is-size-5 has-text-dark mb-4">
+                    It nearly cost me everything.
+                  </p>
+                  <p
+                    class="is-size-5 has-text-navy has-text-weight-semibold mt-5"
+                  >
+                    Now, I guide veterans to discover their identity, purpose,
+                    and voice—before the pressure turns into pain.
+                  </p>
+                  <div class="mt-5">
+                    <a class="button is-medium cta-primary" href="about.html">
+                      Meet Dawnell
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <!-- Image on the right -->
+              <div class="column is-6">
+                <div class="stats-image-container">
+                  <img
+                    src="/images/brand_profile2.png"
+                    alt="Professional finding purpose"
+                    class="stats-image"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="stats-section">
-        <div class="container">
-          <div class="columns is-vcentered is-variable is-6">
-            <!-- Content on the left -->
-            <div class="column is-6">
-              <div class="stats-container">
-                <div class="stats-content">
-                  <div class="stat-row">
-                    <span class="stat-label">JOB...</span>
-                    <span class="stat-check">✔</span>
+        <section class="stats-section">
+          <div class="container">
+            <div class="columns is-vcentered is-variable is-6">
+              <!-- Content on the left -->
+              <div class="column is-6">
+                <div class="stats-container">
+                  <div class="stats-content">
+                    <div class="stat-row">
+                      <span class="stat-label">JOB...</span>
+                      <span class="stat-check">✔</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">FAMILY...</span>
+                      <span class="stat-check">✔</span>
+                    </div>
+                    <div class="stat-row">
+                      <span class="stat-label">BENEFITS...</span>
+                      <span class="stat-check">✔</span>
+                    </div>
                   </div>
-                  <div class="stat-row">
-                    <span class="stat-label">FAMILY...</span>
-                    <span class="stat-check">✔</span>
-                  </div>
-                  <div class="stat-row">
-                    <span class="stat-label">BENEFITS...</span>
-                    <span class="stat-check">✔</span>
-                  </div>
-                </div>
 
-                <div class="question-content">
-                  <h3 class="question-title">
-                    You've Done Everything Right—But It Still Feels Off
-                  </h3>
-                  <p class="question-subtitle">
-                    So why does it still feel like something's missing?
-                  </p>
-                  <p class="question-answer">
-                    It's not you.<br />It's the system you've landed in.
-                  </p>
-                  <p class="question-closing">
-                    Most veteran support ends at "get the job."<br />But no one
-                    talks about what comes after...
-                  </p>
+                  <div class="question-content">
+                    <h3 class="question-title">
+                      You've Done Everything Right—But It Still Feels Off
+                    </h3>
+                    <p class="question-subtitle">
+                      So why does it still feel like something's missing?
+                    </p>
+                    <p class="question-answer">
+                      It's not you.<br />It's the system you've landed in.
+                    </p>
+                    <p class="question-closing">
+                      Most veteran support ends at "get the job."<br />But no
+                      one talks about what comes after...
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Embedded image on the right -->
-            <div class="column is-6">
-              <div class="embedded-image-container">
-                <img
-                  src="images/civilian_cycle.png"
-                  alt="Professional finding purpose"
-                  class="embedded-image"
-                  loading="lazy"
-                />
+              <!-- Embedded image on the right -->
+              <div class="column is-6">
+                <div class="embedded-image-container">
+                  <img
+                    src="images/civilian_cycle.png"
+                    alt="Professional finding purpose"
+                    class="embedded-image"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-    <footer class="footer isyellow">
-      <div class="content has-text-centered">
-        <p>
-          <strong>MCM</strong> by Team 3 IS424 &nbsp;|&nbsp; &copy; 2025. All
-          rights reserved.
-        </p>
-      </div>
-    </footer>
+        </section>
+        <!-- Welcome Message (Visible when logged in) -->
+        <section class="section" id="welcomeSection" style="display: none">
+          <div class="container">
+            <div class="box has-border-left-gold">
+              <div class="columns is-vcentered">
+                <div class="column is-8">
+                  <h2 class="title is-4 has-text-navy">
+                    Welcome back,
+                    <span id="welcomeUserEmail">user@example.com</span>!
+                  </h2>
+                  <p class="is-size-6" style="color: var(--ink2)">
+                    You are successfully signed in. Explore the blog, check out
+                    new content, or sign out securely anytime.
+                  </p>
+                  <div class="buttons mt-4">
+                    <a class="button cta-primary" href="Home.html"
+                      >Go to Home</a
+                    >
+                    <a class="button" id="inlineSignOutBtn">Sign Out</a>
+                  </div>
+                </div>
+                <div class="column is-4">
+                  <figure class="image">
+                    <img
+                      src="images/brand_profile2.png"
+                      alt="Mentor"
+                      loading="lazy"
+                    />
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Auth Forms (Visible when logged out) -->
+        <section class="section has-background-soft-gray" id="auth">
+          <div class="container">
+            <div class="columns is-variable is-6">
+              <!-- Sign In -->
+              <div class="column is-6" id="signInCard">
+                <div class="box">
+                  <h3 class="title is-4 has-text-navy">Sign In</h3>
+                  <form id="signInForm" novalidate>
+                    <div class="field">
+                      <label class="label">Email</label>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          id="signInEmail"
+                          type="email"
+                          placeholder="you@example.com"
+                          required
+                        />
+                        <span class="icon is-small is-left"
+                          ><i class="fas fa-envelope"></i
+                        ></span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">Password</label>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          id="signInPassword"
+                          type="password"
+                          placeholder="••••••••"
+                          minlength="6"
+                          required
+                        />
+                        <span class="icon is-small is-left"
+                          ><i class="fas fa-lock"></i
+                        ></span>
+                      </div>
+                    </div>
+                    <p
+                      class="help is-danger"
+                      id="signInError"
+                      style="display: none"
+                    ></p>
+                    <div class="field mt-4">
+                      <button
+                        class="button cta-primary is-fullwidth"
+                        type="submit"
+                      >
+                        Sign In
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
 
-    <script>
-      // Mobile menu toggle with null checks
-      document.addEventListener("DOMContentLoaded", () => {
-        const burger = document.querySelector(".navbar-burger");
-        const menu = document.getElementById("navbarBasic");
-        if (burger && menu) {
-          burger.addEventListener("click", () => {
-            burger.classList.toggle("is-active");
-            menu.classList.toggle("is-active");
-            const expanded = burger.getAttribute("aria-expanded") === "true";
-            burger.setAttribute("aria-expanded", String(!expanded));
-          });
+              <!-- Sign Up -->
+              <div class="column is-6" id="signUpCard">
+                <div class="box">
+                  <h3 class="title is-4 has-text-navy">Sign Up</h3>
+                  <form id="signUpForm" novalidate>
+                    <div class="field">
+                      <label class="label">Email</label>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          id="signUpEmail"
+                          type="email"
+                          placeholder="you@example.com"
+                          required
+                        />
+                        <span class="icon is-small is-left"
+                          ><i class="fas fa-envelope"></i
+                        ></span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">Password</label>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          id="signUpPassword"
+                          type="password"
+                          placeholder="At least 6 characters"
+                          minlength="6"
+                          required
+                        />
+                        <span class="icon is-small is-left"
+                          ><i class="fas fa-lock"></i
+                        ></span>
+                      </div>
+                    </div>
+                    <p
+                      class="help is-danger"
+                      id="signUpError"
+                      style="display: none"
+                    ></p>
+                    <div class="field mt-4">
+                      <button
+                        class="button cta-primary is-fullwidth"
+                        type="submit"
+                      >
+                        Create Account
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="content mt-2">
+              <p class="is-size-7" style="color: var(--ink2)">
+                Tip: Try creating two accounts and testing login, invalid
+                passwords, and duplicate email handling. Error messages appear
+                below each form.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer isyellow">
+        <div class="content has-text-centered">
+          <p>
+            <strong>MCM</strong> by Team 3 IS424 &nbsp;|&nbsp; &copy; 2025. All
+            rights reserved.
+          </p>
+        </div>
+      </footer>
+      <script>
+        // Mobile menu toggle with null checks
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+              const expanded = burger.getAttribute("aria-expanded") === "true";
+              burger.setAttribute("aria-expanded", String(!expanded));
+            });
+          }
+        });
+      </script>
+      <!-- Navbar toggle -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+            });
+          }
+        });
+      </script>
+
+      <!-- Firebase Authentication Logic -->
+      <script type="module">
+        // Use ESM CDN imports for browsers (no bundler)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import {
+          getAuth,
+          onAuthStateChanged,
+          createUserWithEmailAndPassword,
+          signInWithEmailAndPassword,
+          signOut,
+        } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+        // (Optional) Analytics — only if you want it
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
+
+        // Your Firebase config (keep exactly as the console shows)
+        const firebaseConfig = {
+          apiKey: "AIzaSyBeFawpN7RtHgCVoJWXtPVbLO3iU8gz8xQ",
+          authDomain: "is424-term-project.firebaseapp.com",
+          projectId: "is424-term-project",
+          storageBucket: "is424-term-project.appspot.com", // <- verify in console; adjust if needed
+          messagingSenderId: "571020263691",
+          appId: "1:571020263691:web:73fb6c4519dff2caf0e20e",
+          measurementId: "G-FL49EFV0B1",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // Optional analytics (safe to remove if not used)
+        getAnalytics(app);
+
+        // Initialize Auth
+        const auth = getAuth(app);
+
+        // DOM elements
+        const authArea = document.getElementById("authArea");
+        const navUserEmail = document.getElementById("navUserEmail");
+        const signOutBtn = document.getElementById("signOutBtn");
+        const inlineSignOutBtn = document.getElementById("inlineSignOutBtn");
+        const welcomeSection = document.getElementById("welcomeSection");
+        const welcomeUserEmail = document.getElementById("welcomeUserEmail");
+        const signInForm = document.getElementById("signInForm");
+        const signUpForm = document.getElementById("signUpForm");
+        const signInError = document.getElementById("signInError");
+        const signUpError = document.getElementById("signUpError");
+
+        function toggleAuthUI(isSignedIn, email = "") {
+          authArea
+            .querySelectorAll('[data-auth="signed-in"]')
+            .forEach((el) => (el.style.display = isSignedIn ? "" : "none"));
+          authArea
+            .querySelectorAll('[data-auth="signed-out"]')
+            .forEach((el) => (el.style.display = isSignedIn ? "none" : ""));
+          document.getElementById("auth").style.display = isSignedIn
+            ? "none"
+            : "";
+          welcomeSection.style.display = isSignedIn ? "" : "none";
+          if (isSignedIn) {
+            if (navUserEmail) navUserEmail.textContent = email;
+            if (welcomeUserEmail) welcomeUserEmail.textContent = email;
+          }
         }
-      });
-    </script>
+
+        function showError(el, msg) {
+          if (!el) return;
+          el.textContent = msg;
+          el.style.display = msg ? "" : "none";
+        }
+
+        function mapError(code) {
+          const errors = {
+            "auth/invalid-email": "Invalid email address.",
+            "auth/missing-password": "Please enter your password.",
+            "auth/weak-password": "Password must be at least 6 characters.",
+            "auth/email-already-in-use": "This email is already registered.",
+            "auth/user-not-found": "No account found with this email.",
+            "auth/wrong-password": "Incorrect email or password.",
+            "auth/invalid-credential": "Incorrect email or password.",
+          };
+          return errors[code] || "Authentication error. Please try again.";
+        }
+
+        // Observe auth state
+        onAuthStateChanged(auth, (user) => {
+          if (user && user.email) {
+            toggleAuthUI(true, user.email);
+          } else {
+            toggleAuthUI(false);
+          }
+        });
+
+        // Sign In
+        signInForm?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          showError(signInError, "");
+          const email = document.getElementById("signInEmail").value.trim();
+          const password = document.getElementById("signInPassword").value;
+          try {
+            await signInWithEmailAndPassword(auth, email, password);
+            // UI flips via onAuthStateChanged
+          } catch (err) {
+            showError(signInError, mapError(err.code));
+            console.error(err);
+          }
+        });
+
+        // Sign Up
+        signUpForm?.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          showError(signUpError, "");
+          const email = document.getElementById("signUpEmail").value.trim();
+          const password = document.getElementById("signUpPassword").value;
+          try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            // UI flips via onAuthStateChanged
+          } catch (err) {
+            showError(signUpError, mapError(err.code));
+            console.error(err);
+          }
+        });
+
+        // Sign Out (both buttons)
+        async function handleSignOut(e) {
+          e.preventDefault();
+          try {
+            await signOut(auth);
+          } catch (err) {
+            alert("Sign out failed. Please try again.");
+            console.error(err);
+          }
+        }
+        signOutBtn?.addEventListener("click", handleSignOut);
+        inlineSignOutBtn?.addEventListener("click", handleSignOut);
+      </script>
+    </div>
   </body>
 </html>
