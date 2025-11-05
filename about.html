@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="About MCM — Reclaim your identity. Realign your energy. Build your legacy—without leaving the 9–5."
+    />
+    <title>About | MCM</title>
+
+    <!-- Bulma -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .about-hero {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+        background: transparent;
+      }
+      .about-hero img {
+        width: 100%;
+        height: clamp(280px, 70vh, 640px);
+        object-fit: cover;
+        display: block;
+      }
+
+      .about-section {
+        background-color: var(--soft-gray);
+        padding: 3rem 1rem 5rem;
+        text-align: center;
+      }
+
+      .about-section h1 {
+        color: var(--navy);
+        font-size: 1.7rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+      }
+
+      /* Scrollable card container */
+      .card-scroll-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .card-scroll-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 2rem;
+        padding: 2rem;
+        justify-content: flex-start;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+
+      /* Hide scrollbar */
+      .card-scroll-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Card styles */
+      .about-card {
+        flex: 0 0 80%;
+        max-width: 800px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+        scroll-snap-align: center;
+      }
+
+      .about-card.small {
+        flex: 0 0 60%;
+        opacity: 0.6;
+        transform: scale(0.95);
+      }
+
+      .about-card h2 {
+        color: var(--navy);
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+      }
+
+      .about-card p {
+        color: var(--ink2);
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .about-card {
+          flex: 0 0 90%;
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav
+        class="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a
+            class="navbar-item brand-logo-link"
+            href="Home.html"
+            aria-current="page"
+            aria-label="MCM — Home"
+          >
+            <img
+              src="images/logo_white_gold_blue.png"
+              alt="MCM home"
+              class="brand-logo"
+              loading="eager"
+            />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasic"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasic" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="Home.html">Home</a>
+            <a
+              class="navbar-item active-page"
+              href="about.html"
+              aria-current="page"
+              >About</a
+            >
+            <a class="navbar-item" href="blog.html">Blog</a>
+            <a class="navbar-item" href="Contact.html">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="about-hero">
+      <img
+        <img
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"
+        alt="Work placeholder"
+      />
+      alt="Profile placeholder" />
+    </section>
+
+    <section class="about-section">
+      <h1>Title Something about Me</h1>
+      <div class="card-scroll-wrapper">
+        <div class="card-scroll-container" id="cardScroller">
+          <div class="about-card small">
+            <h2>Before MCM</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Accusamus cum accusantium ab consequatur debitis esse? Similique
+              tempore voluptatem rem sequi?
+            </p>
+          </div>
+
+          <!-- Main card -->
+          <div class="about-card" id="mainCard">
+            <h2>Who is Dawnell Kelly?</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam
+              eligendi architecto, quasi illo iure similique. Libero tempora
+              iusto sit placeat.
+            </p>
+            <br />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+              amet sequi ducimus fugiat, repudiandae veritatis iste labore
+              reiciendis tempora exercitationem.
+            </p>
+          </div>
+
+          <!-- Right small card -->
+          <div class="about-card small">
+            <h2>Beyond MCM</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Temporibus dolores obcaecati ullam distinctio rerum. Aut culpa
+              deleniti consequuntur reiciendis velit!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer isyellow">
+      <div class="content has-text-centered">
+        <p>
+          <strong>MCM</strong> by Team 3 IS424 &nbsp;|&nbsp; &copy; 2025. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile navbar toggle
+      document.addEventListener("DOMContentLoaded", () => {
+        const burger = document.querySelector(".navbar-burger");
+        const menu = document.getElementById("navbarBasic");
+        if (burger && menu) {
+          burger.addEventListener("click", () => {
+            burger.classList.toggle("is-active");
+            menu.classList.toggle("is-active");
+          });
+        }
+
+        const scroller = document.getElementById("cardScroller");
+        const mainCard = document.getElementById("mainCard");
+        if (scroller && mainCard) {
+          const centerTo = () => {
+            const targetLeft =
+              mainCard.offsetLeft -
+              (scroller.clientWidth - mainCard.clientWidth) / 2;
+            scroller.scrollTo({
+              left: targetLeft,
+              behavior: "instant" in window ? "instant" : "auto",
+            });
+          };
+          requestAnimationFrame(centerTo);
+
+          scroller.querySelectorAll(".about-card").forEach((card) => {
+            card.addEventListener("click", () => {
+              const left =
+                card.offsetLeft - (scroller.clientWidth - card.clientWidth) / 2;
+              scroller.scrollTo({ left, behavior: "smooth" });
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
