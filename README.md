@@ -1,6 +1,6 @@
 # IS422_Team3_TermProject
 
-PUBLIC REPO URL**(PLEASE SWITCH TO lily_branch NOT MAIN)**: https://github.com/lolunkash03/IS422_Team3_TermProject.git
+PUBLIC REPO URL **(PLEASE SWITCH TO lily_branch NOT MAIN)**: https://github.com/lolunkash03/IS422_Team3_TermProject.git
 
 **Sprint Forecast & Backlog**
 
