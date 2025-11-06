@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
 
     <style>
@@ -106,54 +110,78 @@
 
   <body>
     <!-- Navbar -->
-    <header>
-      <nav
-        class="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <a
-            class="navbar-item brand-logo-link"
-            href="Home.html"
-            aria-current="page"
-            aria-label="MCM — Home"
-          >
-            <img
-              src="images/logo_white_gold_blue.png"
-              alt="MCM home"
-              class="brand-logo"
-              loading="eager"
-            />
-          </a>
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasic"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasic" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item" href="Home.html">Home</a>
+     <header>
+        <nav
+          class="navbar is-dark"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
             <a
-              class="navbar-item active-page"
-              href="about.html"
+              class="navbar-item brand-logo-link"
+              href="Home.html"
               aria-current="page"
-              >About</a
+              aria-label="MCM — Home"
             >
-            <a class="navbar-item" href="blog.html">Blog</a>
-            <a class="navbar-item" href="Contact.html">Contact</a>
+              <img
+                src="images/logo_white_gold_blue.png"
+                alt="MCM home"
+                class="brand-logo"
+                loading="eager"
+              />
+            </a>
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasic"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-        </div>
-      </nav>
-    </header>
+
+          <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-end">
+              <a
+                class="navbar-item"
+                href="Home.html"
+                aria-current="page"
+                >Home</a
+              >
+              <a class="navbar-item active-page" href="about.html">About</a>
+              <a class="navbar-item" href="Blog.html">Blog</a>
+              <a class="navbar-item" href="Contact.html">Contact</a>
+              <!-- Signed-out -->
+              <a class="navbar-item" href="#auth" data-auth="signed-out"
+                >Sign In</a
+              >
+              <a class="navbar-item" href="#auth" data-auth="signed-out"
+                >Sign Up</a
+              >
+
+              <!-- Signed-in -->
+              <span
+                class="navbar-item has-text-gold"
+                data-auth="signed-in"
+                style="display: none"
+              >
+                Welcome, <span id="navUserEmail">User</span>
+              </span>
+              <a
+                class="navbar-item"
+                href="#"
+                id="signOutBtn"
+                data-auth="signed-in"
+                style="display: none"
+                >Sign Out</a
+              >
+            </div>
+          </div>
+        </nav>
+      </header>
 
     <section class="about-hero">
       <img
@@ -208,11 +236,27 @@
 
     <!-- Footer -->
     <footer class="footer isyellow">
-      <div class="content has-text-centered">
-        <p>
-          <strong>MCM</strong> by Team 3 IS424 &nbsp;|&nbsp; &copy; 2025. All
-          rights reserved.
-        </p>
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424 &nbsp;|&nbsp; 2025. All rights
+            reserved.
+          </p>
+          <div class="social-icons mt-4">
+            <a href="#" class="has-text-white mr-4"
+              ><i class="fab fa-linkedin fa-lg"></i
+            ></a>
+            <a href="#" class="has-text-white mr-4"
+              ><i class="fab fa-instagram fa-lg"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/@theoptimizedveteran"
+              target="_blank"
+              class="has-text-white"
+              ><i class="fab fa-youtube fa-lg"></i
+            ></a>
+          </div>
+        </div>
       </div>
     </footer>
 

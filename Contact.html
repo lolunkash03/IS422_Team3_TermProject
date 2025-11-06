@@ -21,54 +21,78 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <nav
-        class="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <a
-            class="navbar-item brand-logo-link"
-            href="Home.html"
-            aria-current="page"
-            aria-label="MCM — Home"
-          >
-            <img
-              src="images/logo_white_gold_blue.png"
-              alt="MCM home"
-              class="brand-logo"
-              loading="eager"
-            />
-          </a>
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasic"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasic" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item" href="Home.html">Home</a>
-            <a class="navbar-item" href="about.html">About</a>
-            <a class="navbar-item" href="blog.html">Blog</a>
+      <header>
+        <nav
+          class="navbar is-dark"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
             <a
-              class="navbar-item active-page"
-              href="Contact.html"
+              class="navbar-item brand-logo-link"
+              href="Home.html"
               aria-current="page"
-              >Contact</a
+              aria-label="MCM — Home"
             >
+              <img
+                src="images/logo_white_gold_blue.png"
+                alt="MCM home"
+                class="brand-logo"
+                loading="eager"
+              />
+            </a>
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasic"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-        </div>
-      </nav>
-    </header>
+
+          <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-end">
+              <a
+                class="navbar-item"
+                href="Home.html"
+                aria-current="page"
+                >Home</a
+              >
+              <a class="navbar-item" href="about.html">About</a>
+              <a class="navbar-item" href="Blog.html">Blog</a>
+              <a class="navbar-item active-page" href="Contact.html">Contact</a>
+              <!-- Signed-out -->
+              <a class="navbar-item" href="#auth" data-auth="signed-out"
+                >Sign In</a
+              >
+              <a class="navbar-item" href="#auth" data-auth="signed-out"
+                >Sign Up</a
+              >
+
+              <!-- Signed-in -->
+              <span
+                class="navbar-item has-text-gold"
+                data-auth="signed-in"
+                style="display: none"
+              >
+                Welcome, <span id="navUserEmail">User</span>
+              </span>
+              <a
+                class="navbar-item"
+                href="#"
+                id="signOutBtn"
+                data-auth="signed-in"
+                style="display: none"
+                >Sign Out</a
+              >
+            </div>
+          </div>
+        </nav>
+      </header>
 
     <!-- Hero Section -->
     <section class="contact-hero">
@@ -151,7 +175,7 @@
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            <strong class="has-text-white">MCM</strong> &copy; 2025. All rights
+            <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424 &nbsp;|&nbsp; 2025. All rights
             reserved.
           </p>
           <div class="social-icons mt-4">
