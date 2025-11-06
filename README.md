@@ -2,6 +2,9 @@
 
 PUBLIC REPO URL **(PLEASE SWITCH TO lily_branch NOT MAIN)**: https://github.com/lolunkash03/IS422_Team3_TermProject.git
 
+**Trello Board:**
+https://trello.com/b/YtDYzLCw/infosys-424
+
 **Sprint Forecast & Backlog**
 
 Sprint Goal:
