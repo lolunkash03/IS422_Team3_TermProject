@@ -109,7 +109,8 @@
   </head>
 
   <body>
-    <!-- Navbar -->
+    <div id="authArea">
+      <!-- Navbar -->
     <header>
       <nav
         class="navbar is-dark"
@@ -154,6 +155,47 @@
             >
             <a class="navbar-item" href="blog.html">Blog</a>
             <a class="navbar-item" href="Contact.html">Contact</a>
+                        <!-- Signed-out buttons -->
+            <div class="navbar-item" data-auth="signed-out">
+              <div class="buttons">
+                <a
+                  class="button cta-primary is-small is-rounded"
+                  href="#auth"
+                  aria-label="Sign in"
+                >
+                  Sign In
+                </a>
+                <a
+                  class="button cta-primary is-small is-rounded"
+                  href="#auth"
+                  aria-label="Create account"
+                >
+                  Sign Up
+                </a>
+              </div>
+            </div>
+
+            <!-- Signed-in section -->
+            <div
+              class="navbar-item"
+              data-auth="signed-in"
+              style="display: none"
+            >
+              <span class="has-text-gold" id="navUserEmail">Welcome, User</span>
+            </div>
+            <div
+              class="navbar-item"
+              data-auth="signed-in"
+              style="display: none"
+            >
+              <a
+                class="button is-light is-small is-rounded"
+                id="signOutBtn"
+                href="#"
+              >
+                Sign Out
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -562,7 +604,9 @@
       }
       signOutBtn?.addEventListener("click", handleSignOut);
       inlineSignOutBtn?.addEventListener("click", handleSignOut);
-    </script></div>
+    </script>
+    
+    </div>
     
   </body>
 </html>
