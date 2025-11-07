@@ -55,30 +55,47 @@
             <a class="navbar-item" href="about.html">About</a>
             <a class="navbar-item active-page" href="Blog.html">Blog</a>
             <a class="navbar-item" href="Contact.html">Contact</a>
-            <!-- Signed-out -->
-            <a class="navbar-item" href="#auth" data-auth="signed-out"
-              >Sign In</a
-            >
-            <a class="navbar-item" href="#auth" data-auth="signed-out"
-              >Sign Up</a
-            >
+            <!-- Signed-out buttons -->
+            <div class="navbar-item" data-auth="signed-out">
+              <div class="buttons">
+                <a
+                  class="button cta-primary is-small is-rounded"
+                  href="#auth"
+                  aria-label="Sign in"
+                >
+                  Sign In
+                </a>
+                <a
+                  class="button cta-primary is-small is-rounded"
+                  href="#auth"
+                  aria-label="Create account"
+                >
+                  Sign Up
+                </a>
+              </div>
+            </div>
 
-            <!-- Signed-in -->
-            <span
-              class="navbar-item has-text-gold"
-              data-auth="signed-in"
-              style="display: none"
-            >
-              Welcome, <span id="navUserEmail">User</span>
-            </span>
-            <a
+            <!-- Signed-in section -->
+            <div
               class="navbar-item"
-              href="#"
-              id="signOutBtn"
               data-auth="signed-in"
               style="display: none"
-              >Sign Out</a
             >
+              <span class="has-text-gold" id="navUserEmail">Welcome, User</span>
+            </div>
+            <div
+              class="navbar-item"
+              data-auth="signed-in"
+              style="display: none"
+            >
+              <a
+                class="button is-light is-small is-rounded"
+                id="signOutBtn"
+                href="#"
+              >
+                Sign Out
+              </a>
+            </div>
           </div>
         </div>
       </nav>

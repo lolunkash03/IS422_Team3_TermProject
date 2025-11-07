@@ -110,78 +110,54 @@
 
   <body>
     <!-- Navbar -->
-     <header>
-        <nav
-          class="navbar is-dark"
-          role="navigation"
-          aria-label="main navigation"
-        >
-          <div class="navbar-brand">
+    <header>
+      <nav
+        class="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a
+            class="navbar-item brand-logo-link"
+            href="Home.html"
+            aria-current="page"
+            aria-label="MCM — Home"
+          >
+            <img
+              src="images/logo_white_gold_blue.png"
+              alt="MCM home"
+              class="brand-logo"
+              loading="eager"
+            />
+          </a>
+          <a
+            role="button"
+            class="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasic"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasic" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="Home.html">Home</a>
             <a
-              class="navbar-item brand-logo-link"
-              href="Home.html"
+              class="navbar-item active-page"
+              href="about.html"
               aria-current="page"
-              aria-label="MCM — Home"
+              >About</a
             >
-              <img
-                src="images/logo_white_gold_blue.png"
-                alt="MCM home"
-                class="brand-logo"
-                loading="eager"
-              />
-            </a>
-            <a
-              role="button"
-              class="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasic"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
+            <a class="navbar-item" href="blog.html">Blog</a>
+            <a class="navbar-item" href="Contact.html">Contact</a>
           </div>
-
-          <div id="navbarBasic" class="navbar-menu">
-            <div class="navbar-end">
-              <a
-                class="navbar-item"
-                href="Home.html"
-                aria-current="page"
-                >Home</a
-              >
-              <a class="navbar-item active-page" href="about.html">About</a>
-              <a class="navbar-item" href="Blog.html">Blog</a>
-              <a class="navbar-item" href="Contact.html">Contact</a>
-              <!-- Signed-out -->
-              <a class="navbar-item" href="#auth" data-auth="signed-out"
-                >Sign In</a
-              >
-              <a class="navbar-item" href="#auth" data-auth="signed-out"
-                >Sign Up</a
-              >
-
-              <!-- Signed-in -->
-              <span
-                class="navbar-item has-text-gold"
-                data-auth="signed-in"
-                style="display: none"
-              >
-                Welcome, <span id="navUserEmail">User</span>
-              </span>
-              <a
-                class="navbar-item"
-                href="#"
-                id="signOutBtn"
-                data-auth="signed-in"
-                style="display: none"
-                >Sign Out</a
-              >
-            </div>
-          </div>
-        </nav>
-      </header>
+        </div>
+      </nav>
+    </header>
 
     <section class="about-hero">
       <img
@@ -233,6 +209,150 @@
         </div>
       </div>
     </section>
+    <!-- Welcome Message (Visible when logged in) -->
+      <section class="section" id="welcomeSection" style="display: none">
+        <div class="container">
+          <div class="box has-border-left-gold">
+            <div class="columns is-vcentered">
+              <div class="column is-8">
+                <h2 class="title is-4 has-text-navy">
+                  Welcome back,
+                  <span id="welcomeUserEmail">user@example.com</span>!
+                </h2>
+                <p class="is-size-6" style="color: var(--ink2)">
+                  You are successfully signed in. Explore the blog, check out
+                  new content, or sign out securely anytime.
+                </p>
+                <div class="buttons mt-4">
+                  <a class="button cta-primary" href="Home.html">Go to Home</a>
+                  <a class="button" id="inlineSignOutBtn">Sign Out</a>
+                </div>
+              </div>
+              <div class="column is-4">
+                <figure class="image">
+                  <img
+                    src="images/brand_profile2.png"
+                    alt="Mentor"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Auth Forms (Visible when logged out) -->
+      <section class="section has-background-soft-gray" id="auth">
+        <div class="container">
+          <div class="columns is-variable is-6">
+            <!-- Sign In -->
+            <div class="column is-6" id="signInCard">
+              <div class="box">
+                <h3 class="title is-4 has-text-navy">Sign In</h3>
+                <form id="signInForm" novalidate>
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left">
+                      <input
+                        class="input"
+                        id="signInEmail"
+                        type="email"
+                        placeholder="you@example.com"
+                        required
+                      />
+                      <span class="icon is-small is-left"
+                        ><i class="fas fa-envelope"></i
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                      <input
+                        class="input"
+                        id="signInPassword"
+                        type="password"
+                        placeholder="••••••••"
+                        minlength="6"
+                        required
+                      />
+                      <span class="icon is-small is-left"
+                        ><i class="fas fa-lock"></i
+                      ></span>
+                    </div>
+                  </div>
+                  <p
+                    class="help is-danger"
+                    id="signInError"
+                    style="display: none"
+                  ></p>
+                  <div class="field mt-4">
+                    <button
+                      class="button cta-primary is-fullwidth"
+                      type="submit"
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Sign Up -->
+            <div class="column is-6" id="signUpCard">
+              <div class="box">
+                <h3 class="title is-4 has-text-navy">Sign Up</h3>
+                <form id="signUpForm" novalidate>
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left">
+                      <input
+                        class="input"
+                        id="signUpEmail"
+                        type="email"
+                        placeholder="you@example.com"
+                        required
+                      />
+                      <span class="icon is-small is-left"
+                        ><i class="fas fa-envelope"></i
+                      ></span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <div class="control has-icons-left">
+                      <input
+                        class="input"
+                        id="signUpPassword"
+                        type="password"
+                        placeholder="At least 6 characters"
+                        minlength="6"
+                        required
+                      />
+                      <span class="icon is-small is-left"
+                        ><i class="fas fa-lock"></i
+                      ></span>
+                    </div>
+                  </div>
+                  <p
+                    class="help is-danger"
+                    id="signUpError"
+                    style="display: none"
+                  ></p>
+                  <div class="field mt-4">
+                    <button
+                      class="button cta-primary is-fullwidth"
+                      type="submit"
+                    >
+                      Create Account
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
 
     <!-- Footer -->
     <footer class="footer isyellow">
@@ -296,5 +416,153 @@
         }
       });
     </script>
+     <!-- Navbar toggle -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const burger = document.querySelector(".navbar-burger");
+        const menu = document.getElementById("navbarBasic");
+        if (burger && menu) {
+          burger.addEventListener("click", () => {
+            burger.classList.toggle("is-active");
+            menu.classList.toggle("is-active");
+          });
+        }
+      });
+    </script>
+
+    <!-- Firebase Authentication Logic -->
+    <script type="module">
+      // Use ESM CDN imports for browsers (no bundler)
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+      // (Optional) Analytics — only if you want it
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
+
+      // Your Firebase config (keep exactly as the console shows)
+      const firebaseConfig = {
+        apiKey: "AIzaSyBeFawpN7RtHgCVoJWXtPVbLO3iU8gz8xQ",
+        authDomain: "is424-term-project.firebaseapp.com",
+        projectId: "is424-term-project",
+        storageBucket: "is424-term-project.appspot.com", // <- verify in console; adjust if needed
+        messagingSenderId: "571020263691",
+        appId: "1:571020263691:web:73fb6c4519dff2caf0e20e",
+        measurementId: "G-FL49EFV0B1",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      // Optional analytics (safe to remove if not used)
+      getAnalytics(app);
+
+      // Initialize Auth
+      const auth = getAuth(app);
+
+      // DOM elements
+      const authArea = document.getElementById("authArea");
+      const navUserEmail = document.getElementById("navUserEmail");
+      const signOutBtn = document.getElementById("signOutBtn");
+      const inlineSignOutBtn = document.getElementById("inlineSignOutBtn");
+      const welcomeSection = document.getElementById("welcomeSection");
+      const welcomeUserEmail = document.getElementById("welcomeUserEmail");
+      const signInForm = document.getElementById("signInForm");
+      const signUpForm = document.getElementById("signUpForm");
+      const signInError = document.getElementById("signInError");
+      const signUpError = document.getElementById("signUpError");
+
+      function toggleAuthUI(isSignedIn, email = "") {
+        authArea
+          .querySelectorAll('[data-auth="signed-in"]')
+          .forEach((el) => (el.style.display = isSignedIn ? "" : "none"));
+        authArea
+          .querySelectorAll('[data-auth="signed-out"]')
+          .forEach((el) => (el.style.display = isSignedIn ? "none" : ""));
+        document.getElementById("auth").style.display = isSignedIn
+          ? "none"
+          : "";
+        welcomeSection.style.display = isSignedIn ? "" : "none";
+        if (isSignedIn) {
+          if (navUserEmail) navUserEmail.textContent = email;
+          if (welcomeUserEmail) welcomeUserEmail.textContent = email;
+        }
+      }
+
+      function showError(el, msg) {
+        if (!el) return;
+        el.textContent = msg;
+        el.style.display = msg ? "" : "none";
+      }
+
+      function mapError(code) {
+        const errors = {
+          "auth/invalid-email": "Invalid email address.",
+          "auth/missing-password": "Please enter your password.",
+          "auth/weak-password": "Password must be at least 6 characters.",
+          "auth/email-already-in-use": "This email is already registered.",
+          "auth/user-not-found": "No account found with this email.",
+          "auth/wrong-password": "Incorrect email or password.",
+          "auth/invalid-credential": "Incorrect email or password.",
+        };
+        return errors[code] || "Authentication error. Please try again.";
+      }
+
+      // Observe auth state
+      onAuthStateChanged(auth, (user) => {
+        if (user && user.email) {
+          toggleAuthUI(true, user.email);
+        } else {
+          toggleAuthUI(false);
+        }
+      });
+
+      // Sign In
+      signInForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        showError(signInError, "");
+        const email = document.getElementById("signInEmail").value.trim();
+        const password = document.getElementById("signInPassword").value;
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          // UI flips via onAuthStateChanged
+        } catch (err) {
+          showError(signInError, mapError(err.code));
+          console.error(err);
+        }
+      });
+
+      // Sign Up
+      signUpForm?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        showError(signUpError, "");
+        const email = document.getElementById("signUpEmail").value.trim();
+        const password = document.getElementById("signUpPassword").value;
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          // UI flips via onAuthStateChanged
+        } catch (err) {
+          showError(signUpError, mapError(err.code));
+          console.error(err);
+        }
+      });
+
+      // Sign Out (both buttons)
+      async function handleSignOut(e) {
+        e.preventDefault();
+        try {
+          await signOut(auth);
+        } catch (err) {
+          alert("Sign out failed. Please try again.");
+          console.error(err);
+        }
+      }
+      signOutBtn?.addEventListener("click", handleSignOut);
+      inlineSignOutBtn?.addEventListener("click", handleSignOut);
+    </script></div>
+    
   </body>
 </html>

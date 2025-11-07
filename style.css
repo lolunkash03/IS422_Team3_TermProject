@@ -575,3 +575,31 @@ body {
     padding: 3rem 1rem;
   }
 }
+
+/* Spacing between buttons in navbar */
+.navbar .buttons .button + .button {
+  margin-left: 0.5rem;
+}
+
+/* Make buttons full-width in mobile view for better tapping */
+@media (max-width: 1023px) {
+  .navbar-menu .buttons .button {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Prevent the Sign In / Sign Up area from changing background on hover */
+.navbar-item[data-auth="signed-out"]:hover,
+.navbar-item[data-auth="signed-in"]:hover {
+  background: var(--navy) !important; /* keep dark navy background */
+}
+
+/* Ensure the buttons inside still keep their own hover styles */
+.navbar .navbar-item[data-auth] .button:hover {
+  background-color: var(--light-gold) !important;
+  color: var(--white) !important;
+  border-color: transparent !important;
+}
