@@ -21,364 +21,257 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="authArea"><header>
-      <nav
-        class="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <a
-            class="navbar-item brand-logo-link"
-            href="Home.html"
-            aria-current="page"
-            aria-label="MCM — Home"
-          >
-            <img
-              src="images/logo_white_gold_blue.png"
-              alt="MCM home"
-              class="brand-logo"
-              loading="eager"
-            />
-          </a>
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasic"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasic" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item" href="Home.html">Home</a>
-            <a class="navbar-item" href="about.html">About</a>
-            <a class="navbar-item" href="blog.html">Blog</a>
+    <div id="authArea">
+      <header>
+        <nav
+          class="navbar is-dark"
+          role="navigation"
+          aria-label="main navigation"
+        >
+          <div class="navbar-brand">
             <a
-              class="navbar-item active-page"
-              href="Contact.html"
+              class="navbar-item brand-logo-link"
+              href="Home.html"
               aria-current="page"
-              >Contact</a
+              aria-label="MCM — Home"
             >
-                        <!-- Signed-out buttons -->
-            <div class="navbar-item" data-auth="signed-out">
-              <div class="buttons">
-                <a
-                  class="button cta-primary is-small is-rounded"
-                  href="#auth"
-                  aria-label="Sign in"
+              <img
+                src="images/logo_white_gold_blue.png"
+                alt="MCM home"
+                class="brand-logo"
+                loading="eager"
+              />
+            </a>
+            <a
+              role="button"
+              class="navbar-burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasic"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navbarBasic" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item" href="Home.html">Home</a>
+              <a class="navbar-item" href="about.html">About</a>
+              <a class="navbar-item" href="blog.html">Blog</a>
+              <a
+                class="navbar-item active-page"
+                href="Contact.html"
+                aria-current="page"
+                >Contact</a
+              >
+              <!-- Signed-out buttons -->
+              <div class="navbar-item" data-auth="signed-out">
+                <div class="buttons">
+                  <a
+                    class="button cta-primary is-small is-rounded"
+                    href="#auth"
+                    aria-label="Sign in"
+                  >
+                    Sign In
+                  </a>
+                  <a
+                    class="button cta-primary is-small is-rounded"
+                    href="#auth"
+                    aria-label="Create account"
+                  >
+                    Sign Up
+                  </a>
+                </div>
+              </div>
+
+              <!-- Signed-in section -->
+              <div
+                class="navbar-item"
+                data-auth="signed-in"
+                style="display: none"
+              >
+                <span class="has-text-gold" id="navUserEmail"
+                  >Welcome, User</span
                 >
-                  Sign In
-                </a>
+              </div>
+              <div
+                class="navbar-item"
+                data-auth="signed-in"
+                style="display: none"
+              >
                 <a
-                  class="button cta-primary is-small is-rounded"
-                  href="#auth"
-                  aria-label="Create account"
+                  class="button is-light is-small is-rounded"
+                  id="signOutBtn"
+                  href="#"
                 >
-                  Sign Up
+                  Sign Out
                 </a>
               </div>
             </div>
+          </div>
+        </nav>
+      </header>
 
-            <!-- Signed-in section -->
-            <div
-              class="navbar-item"
-              data-auth="signed-in"
-              style="display: none"
-            >
-              <span class="has-text-gold" id="navUserEmail">Welcome, User</span>
-            </div>
-            <div
-              class="navbar-item"
-              data-auth="signed-in"
-              style="display: none"
-            >
+      <!-- Hero Section -->
+      <section class="contact-hero">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-7">
+              <h1 class="contact-headline">Contact Us</h1>
+              <p class="contact-subcopy">
+                Fill out the form below if you have any questions, comments, or
+                would like to learn more about our services.
+              </p>
               <a
-                class="button is-light is-small is-rounded"
-                id="signOutBtn"
-                href="#"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSe-O-v8aUaHTDobjLIiaFgoIUV2y6bHVd1FqvlbvHlifUwJZA/viewform "
+                target="_blank"
+                class="cta-primary button"
               >
-                Sign Out
+                Contact Form
               </a>
             </div>
           </div>
         </div>
-      </nav>
-    </header>
+      </section>
 
-    <!-- Hero Section -->
-    <section class="contact-hero">
-      <div class="container">
-        <div class="columns is-vcentered">
-          <div class="column is-7">
-            <h1 class="contact-headline">Contact Us</h1>
-            <p class="contact-subcopy">
-              Fill out the form below if you have any questions, comments, or
-              would like to learn more about our services.
-            </p>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSe-O-v8aUaHTDobjLIiaFgoIUV2y6bHVd1FqvlbvHlifUwJZA/viewform "
-              target="_blank"
-              class="cta-primary button"
-            >
-              Contact Form
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Information Section -->
-    <section class="section has-background-soft-gray">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-10">
-            <div class="columns is-multiline">
-              <!-- YouTube Channel -->
-              <div class="column is-4">
-                <div class="contact-card has-text-centered">
-                  <div class="contact-icon">
-                    <i class="fab fa-youtube fa-lg"></i>
-                  </div>
-                  <h3 class="contact-method-title">YouTube Channel</h3>
-                  <p class="contact-method-desc">
-                    <a href="https://www.youtube.com/@theoptimizedveteran">
-                      Youtube Link
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <!-- Email -->
-              <div class="column is-4">
-                <div class="contact-card has-text-centered">
-                  <div class="contact-icon">
-                    <i class="fas fa-envelope fa-lg"></i>
-                  </div>
-                  <h3 class="contact-method-title">Email Us</h3>
-                  <p class="contact-method-desc">
-                    <a href="hello@dawnellkelly.com">
-                      hello@dawnellkelly.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <!-- linkedin -->
-              <div class="column is-4">
-                <div class="contact-card has-text-centered">
-                  <div class="contact-icon">
-                    <i class="fas fa-linkedin fa-lg"></i>
-                  </div>
-                  <h3 class="contact-method-title">Our Linkedin</h3>
-                  <p class="contact-method-desc">
-                    <a href="linkedin.com">in/dawnell-kelly</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-     <!-- Welcome Message (Visible when logged in) -->
-        <section class="section" id="welcomeSection" style="display: none">
-          <div class="container">
-            <div class="box has-border-left-gold">
-              <div class="columns is-vcentered">
-                <div class="column is-8">
-                  <h2 class="title is-4 has-text-navy">
-                    Welcome back,
-                    <span id="welcomeUserEmail">user@example.com</span>!
-                  </h2>
-                  <p class="is-size-6" style="color: var(--ink2)">
-                    You are successfully signed in. Explore the blog, check out
-                    new content, or sign out securely anytime.
-                  </p>
-                  <div class="buttons mt-4">
-                    <a class="button cta-primary" href="Home.html"
-                      >Go to Home</a
-                    >
-                    <a class="button" id="inlineSignOutBtn">Sign Out</a>
-                  </div>
-                </div>
+      <!-- Contact Information Section -->
+      <section class="section has-background-soft-gray">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-10">
+              <div class="columns is-multiline">
+                <!-- YouTube Channel -->
                 <div class="column is-4">
-                  <figure class="image">
-                    <img
-                      src="images/brand_profile2.png"
-                      alt="Mentor"
-                      loading="lazy"
-                    />
-                  </figure>
+                  <div class="contact-card has-text-centered">
+                    <div class="contact-icon">
+                      <i class="fab fa-youtube fa-lg"></i>
+                    </div>
+                    <h3 class="contact-method-title">YouTube Channel</h3>
+                    <p class="contact-method-desc">
+                      <a href="https://www.youtube.com/@theoptimizedveteran">
+                        Youtube Link
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="column is-4">
+                  <div class="contact-card has-text-centered">
+                    <div class="contact-icon">
+                      <i class="fas fa-envelope fa-lg"></i>
+                    </div>
+                    <h3 class="contact-method-title">Email Us</h3>
+                    <p class="contact-method-desc">
+                      <a href="hello@dawnellkelly.com">
+                        hello@dawnellkelly.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- linkedin -->
+                <div class="column is-4">
+                  <div class="contact-card has-text-centered">
+                    <div class="contact-icon">
+                      <i class="fas fa-linkedin fa-lg"></i>
+                    </div>
+                    <h3 class="contact-method-title">Our Linkedin</h3>
+                    <p class="contact-method-desc">
+                      <a href="linkedin.com">in/dawnell-kelly</a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <!-- Auth Forms (Visible when logged out) -->
-        <section class="section has-background-soft-gray" id="auth">
-          <div class="container">
-            <div class="columns is-variable is-6">
-              <!-- Sign In -->
-              <div class="column is-6" id="signInCard">
-                <div class="box">
-                  <h3 class="title is-4 has-text-navy">Sign In</h3>
-                  <form id="signInForm" novalidate>
-                    <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control has-icons-left">
-                        <input
-                          class="input"
-                          id="signInEmail"
-                          type="email"
-                          placeholder="you@example.com"
-                          required
-                        />
-                        <span class="icon is-small is-left"
-                          ><i class="fas fa-envelope"></i
-                        ></span>
-                      </div>
-                    </div>
-                    <div class="field">
-                      <label class="label">Password</label>
-                      <div class="control has-icons-left">
-                        <input
-                          class="input"
-                          id="signInPassword"
-                          type="password"
-                          placeholder="••••••••"
-                          minlength="6"
-                          required
-                        />
-                        <span class="icon is-small is-left"
-                          ><i class="fas fa-lock"></i
-                        ></span>
-                      </div>
-                    </div>
-                    <p
-                      class="help is-danger"
-                      id="signInError"
-                      style="display: none"
-                    ></p>
-                    <div class="field mt-4">
-                      <button
-                        class="button cta-primary is-fullwidth"
-                        type="submit"
-                      >
-                        Sign In
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <!-- Sign Up -->
-              <div class="column is-6" id="signUpCard">
-                <div class="box">
-                  <h3 class="title is-4 has-text-navy">Sign Up</h3>
-                  <form id="signUpForm" novalidate>
-                    <div class="field">
-                      <label class="label">Email</label>
-                      <div class="control has-icons-left">
-                        <input
-                          class="input"
-                          id="signUpEmail"
-                          type="email"
-                          placeholder="you@example.com"
-                          required
-                        />
-                        <span class="icon is-small is-left"
-                          ><i class="fas fa-envelope"></i
-                        ></span>
-                      </div>
-                    </div>
-                    <div class="field">
-                      <label class="label">Password</label>
-                      <div class="control has-icons-left">
-                        <input
-                          class="input"
-                          id="signUpPassword"
-                          type="password"
-                          placeholder="At least 6 characters"
-                          minlength="6"
-                          required
-                        />
-                        <span class="icon is-small is-left"
-                          ><i class="fas fa-lock"></i
-                        ></span>
-                      </div>
-                    </div>
-                    <p
-                      class="help is-danger"
-                      id="signUpError"
-                      style="display: none"
-                    ></p>
-                    <div class="field mt-4">
-                      <button
-                        class="button cta-primary is-fullwidth"
-                        type="submit"
-                      >
-                        Create Account
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-    <!-- Footer -->
-    <footer class="footer isyellow">
-      <div class="container">
-        <div class="content has-text-centered">
-          <p>
-            <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424 &nbsp;|&nbsp; 2025. All rights
-            reserved.
-          </p>
-          <div class="social-icons mt-4">
-            <a href="https://www.linkedin.com/in/dawnellkelly/" class="has-text-white mr-4"
-              ><i class="fab fa-linkedin fa-lg"></i
-            ></a>
-            <a href="#" class="has-text-white mr-4"
-              ><i class="fab fa-instagram fa-lg"></i
-            ></a>
-            <a
-              href="https://www.youtube.com/@theoptimizedveteran"
-              target="_blank"
-              class="has-text-white"
-              ><i class="fab fa-youtube fa-lg"></i
-            ></a>
           </div>
         </div>
-      </div>
-    </footer>
+      </section>
+      <!-- Welcome Message (Visible when logged in) -->
+      <section class="section" id="welcomeSection" style="display: none">
+        <div class="container">
+          <div class="box has-border-left-gold">
+            <div class="columns is-vcentered">
+              <div class="column is-8">
+                <h2 class="title is-4 has-text-navy">
+                  Welcome back,
+                  <span id="welcomeUserEmail">user@example.com</span>!
+                </h2>
+                <p class="is-size-6" style="color: var(--ink2)">
+                  You are successfully signed in. Explore the blog, check out
+                  new content, or sign out securely anytime.
+                </p>
+                <div class="buttons mt-4">
+                  <a class="button cta-primary" href="Home.html">Go to Home</a>
+                  <a class="button" id="inlineSignOutBtn">Sign Out</a>
+                </div>
+              </div>
+              <div class="column is-4">
+                <figure class="image">
+                  <img
+                    src="images/brand_profile2.png"
+                    alt="Mentor"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <script>
-      // Mobile menu toggle
-      document.addEventListener("DOMContentLoaded", () => {
-        const $navbarBurgers = Array.prototype.slice.call(
-          document.querySelectorAll(".navbar-burger"),
-          0
-        );
+      <!-- Footer -->
+      <footer class="footer isyellow">
+        <div class="container">
+          <div class="content has-text-centered">
+            <p>
+              <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424
+              &nbsp;|&nbsp; 2025. All rights reserved.
+            </p>
+            <div class="social-icons mt-4">
+              <a
+                href="https://www.linkedin.com/in/dawnellkelly/"
+                class="has-text-white mr-4"
+                ><i class="fab fa-linkedin fa-lg"></i
+              ></a>
+              <a href="#" class="has-text-white mr-4"
+                ><i class="fab fa-instagram fa-lg"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/@theoptimizedveteran"
+                target="_blank"
+                class="has-text-white"
+                ><i class="fab fa-youtube fa-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
-        if ($navbarBurgers.length > 0) {
-          $navbarBurgers.forEach((el) => {
-            el.addEventListener("click", () => {
-              const target = el.dataset.target;
-              const $target = document.getElementById(target);
+      <script>
+        // Mobile menu toggle
+        document.addEventListener("DOMContentLoaded", () => {
+          const $navbarBurgers = Array.prototype.slice.call(
+            document.querySelectorAll(".navbar-burger"),
+            0
+          );
 
-              el.classList.toggle("is-active");
-              $target.classList.toggle("is-active");
+          if ($navbarBurgers.length > 0) {
+            $navbarBurgers.forEach((el) => {
+              el.addEventListener("click", () => {
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                el.classList.toggle("is-active");
+                $target.classList.toggle("is-active");
+              });
             });
-          });
-        }
-      });
-    </script>
-    <!-- Navbar toggle -->
+          }
+        });
+      </script>
+      <!-- Navbar toggle -->
       <script>
         document.addEventListener("DOMContentLoaded", () => {
           const burger = document.querySelector(".navbar-burger");
@@ -524,7 +417,7 @@
         }
         signOutBtn?.addEventListener("click", handleSignOut);
         inlineSignOutBtn?.addEventListener("click", handleSignOut);
-      </script></div>
-    
+      </script>
+    </div>
   </body>
 </html>
