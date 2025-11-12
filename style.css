@@ -603,3 +603,15 @@ body {
   color: var(--white) !important;
   border-color: transparent !important;
 }
+
+.modal-card {
+  width: 420px;
+  border-radius: 12px;
+}
+.modal-card-head {
+  background: var(--dark_gold);
+  color: white;
+}
+.modal-card-title {
+  font-weight: 700;
+}
