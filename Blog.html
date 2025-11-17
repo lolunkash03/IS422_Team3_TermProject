@@ -130,274 +130,200 @@
           </div>
         </div>
       </section>
-
-      <!-- Welcome Message (Visible when logged in) -->
-      <section class="section" id="welcomeSection" style="display: none">
-        <div class="container">
-          <div class="box has-border-left-gold">
-            <div class="columns is-vcentered">
-              <div class="column is-8">
-                <h2 class="title is-4 has-text-navy">
-                  Welcome back,
-                  <span id="welcomeUserEmail">user@example.com</span>!
-                </h2>
-                <p class="is-size-6" style="color: var(--ink2)">
-                  You are successfully signed in. Explore the blog, check out
-                  new content, or sign out securely anytime.
-                </p>
-                <div class="buttons mt-4">
-                  <a class="button cta-primary" href="Home.html">Go to Home</a>
-                  <a class="button" id="inlineSignOutBtn">Sign Out</a>
+      <!-- Auth Modal -->
+      <div id="authModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title" id="modalTitle">Sign In</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Sign In -->
+            <form id="signInForm" style="display: block">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
                 </div>
               </div>
-              <div class="column is-4">
-                <figure class="image">
-                  <img
-                    src="images/brand_profile2.png"
-                    alt="Mentor"
-                    loading="lazy"
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInPassword"
+                    class="input"
+                    type="password"
+                    placeholder="••••••"
                   />
-                </figure>
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
               </div>
-            </div>
-          </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Sign In
+              </button>
+              <p class="mt-3 has-text-centered">
+                Don't have an account?
+                <a id="switchToSignUp">Sign Up</a>
+              </p>
+            </form>
+
+            <!-- Sign Up -->
+            <form id="signUpForm" style="display: none">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpPassword"
+                    class="input"
+                    type="password"
+                    placeholder="At least 6 characters"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Create Account
+              </button>
+              <p class="mt-3 has-text-centered">
+                Already have an account?
+                <a id="switchToSignIn">Sign In</a>
+              </p>
+            </form>
+          </section>
         </div>
-      </section>
-
-      <!-- Auth Forms (Visible when logged out) -->
-      <!-- <section class="section has-background-soft-gray" id="auth">
-        <div class="container">
-          <div class="columns is-variable is-6"> -->
-      <!-- Sign In -->
-      <!-- <div class="column is-6" id="signInCard">
-              <div class="box">
-                <h3 class="title is-4 has-text-navy">Sign In</h3>
-                <form id="signInForm" novalidate>
-                  <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control has-icons-left">
-                      <input
-                        class="input"
-                        id="signInEmail"
-                        type="email"
-                        placeholder="you@example.com"
-                        required
-                      />
-                      <span class="icon is-small is-left"
-                        ><i class="fas fa-envelope"></i
-                      ></span>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control has-icons-left">
-                      <input
-                        class="input"
-                        id="signInPassword"
-                        type="password"
-                        placeholder="••••••••"
-                        minlength="6"
-                        required
-                      />
-                      <span class="icon is-small is-left"
-                        ><i class="fas fa-lock"></i
-                      ></span>
-                    </div>
-                  </div>
-                  <p
-                    class="help is-danger"
-                    id="signInError"
-                    style="display: none"
-                  ></p>
-                  <div class="field mt-4">
-                    <button
-                      class="button cta-primary is-fullwidth"
-                      type="submit"
-                    >
-                      Sign In
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div> -->
-
-      <!-- Sign Up -->
-      <!-- <div class="column is-6" id="signUpCard">
-              <div class="box">
-                <h3 class="title is-4 has-text-navy">Sign Up</h3>
-                <form id="signUpForm" novalidate>
-                  <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control has-icons-left">
-                      <input
-                        class="input"
-                        id="signUpEmail"
-                        type="email"
-                        placeholder="you@example.com"
-                        required
-                      />
-                      <span class="icon is-small is-left"
-                        ><i class="fas fa-envelope"></i
-                      ></span>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control has-icons-left">
-                      <input
-                        class="input"
-                        id="signUpPassword"
-                        type="password"
-                        placeholder="At least 6 characters"
-                        minlength="6"
-                        required
-                      />
-                      <span class="icon is-small is-left"
-                        ><i class="fas fa-lock"></i
-                      ></span>
-                    </div>
-                  </div>
-                  <p
-                    class="help is-danger"
-                    id="signUpError"
-                    style="display: none"
-                  ></p>
-                  <div class="field mt-4">
-                    <button
-                      class="button cta-primary is-fullwidth"
-                      type="submit"
-                    >
-                      Create Account
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div> -->
-
-      <!-- <div class="content mt-2">
-            <p class="is-size-7" style="color: var(--ink2)">
-              Tip: Try creating two accounts and testing login, invalid
-              passwords, and duplicate email handling. Error messages appear
-              below each form.
-            </p>
-          </div>
-        </div>
-      </section> -->
-
-      <!-- Sprint Notes -->
-      <section class="section">
-        <div class="container">
-          <div class="box has-border-left-gold">
-            <h3 class="title is-4 has-text-navy">Sprint Notes</h3>
-            <ul class="content">
-              <li>
-                Integrated <strong>Firebase v9 modular API</strong> with
-                <code>onAuthStateChanged</code> to sync user sessions across
-                pages.
-              </li>
-              <li>
-                Added form validation (email format and password length ≥ 6).
-              </li>
-              <li>
-                Mapped Firebase error codes to user-friendly messages and
-                updated UI dynamically after login/logout.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Auth Modal -->
-    <div id="authModal" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title" id="modalTitle">Sign In</p>
-          <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <!-- Sign In -->
-          <form id="signInForm" style="display: block">
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control has-icons-left">
-                <input
-                  id="signInEmail"
-                  class="input"
-                  type="email"
-                  placeholder="you@example.com"
-                />
-                <span class="icon is-small is-left"
-                  ><i class="fas fa-envelope"></i
-                ></span>
-              </div>
-            </div>
-            <div class="field">
-              <label class="label">Password</label>
-              <div class="control has-icons-left">
-                <input
-                  id="signInPassword"
-                  class="input"
-                  type="password"
-                  placeholder="••••••"
-                />
-                <span class="icon is-small is-left"
-                  ><i class="fas fa-lock"></i
-                ></span>
-              </div>
-            </div>
-            <button class="button cta-primary is-fullwidth mt-4" type="submit">
-              Sign In
-            </button>
-            <p class="mt-3 has-text-centered">
-              Don't have an account?
-              <a id="switchToSignUp">Sign Up</a>
-            </p>
-          </form>
-
-          <!-- Sign Up -->
-          <form id="signUpForm" style="display: none">
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control has-icons-left">
-                <input
-                  id="signUpEmail"
-                  class="input"
-                  type="email"
-                  placeholder="you@example.com"
-                />
-                <span class="icon is-small is-left"
-                  ><i class="fas fa-envelope"></i
-                ></span>
-              </div>
-            </div>
-            <div class="field">
-              <label class="label">Password</label>
-              <div class="control has-icons-left">
-                <input
-                  id="signUpPassword"
-                  class="input"
-                  type="password"
-                  placeholder="At least 6 characters"
-                />
-                <span class="icon is-small is-left"
-                  ><i class="fas fa-lock"></i
-                ></span>
-              </div>
-            </div>
-            <button class="button cta-primary is-fullwidth mt-4" type="submit">
-              Create Account
-            </button>
-            <p class="mt-3 has-text-centered">
-              Already have an account?
-              <a id="switchToSignIn">Sign In</a>
-            </p>
-          </form>
-        </section>
       </div>
-    </div>
+      <!-- Blog Section -->
+      <section class="section" id="blogSection">
+        <div class="container">
+          <div class="level mb-5">
+            <div class="level-left">
+              <h2 class="title is-3 has-text-navy">Latest Blogs</h2>
+            </div>
+            <div class="level-right">
+              <!-- Only show if admin -->
+              <button
+                id="openCreateBlogModalBtn"
+                class="button cta-primary is-rounded"
+                style="display: none"
+              >
+                <span class="icon"><i class="fas fa-pen-nib"></i></span>
+                <span>Create New Blog</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="blogCards" class="columns is-multiline">
+            <!-- Blog cards dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+      <!-- Only visible to admins -->
+      <section class="section" id="adminPanel" style="display: none">
+        <div class="container">
+          <h2 class="title is-4 has-text-navy">Admin Panel</h2>
+
+          <!-- Manage existing blogs (KEEP) -->
+          <div class="box">
+            <h3 class="subtitle is-5 has-text-gold">Manage Published Blogs</h3>
+            <div id="adminBlogList" class="content">
+              <!-- Admin view of blogs (with Edit/Delete buttons) -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Creation Modal -->
+<div id="createBlogModal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card" style="width: 70%;">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-navy">Create a New Blog Post</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <form id="createBlogForm">
+        <div class="field">
+          <label class="label">Blog Title</label>
+          <div class="control">
+            <input
+              id="blogTitle"
+              class="input"
+              type="text"
+              placeholder="Enter blog title"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Content</label>
+          <div class="control">
+            <textarea
+              id="blogContent"
+              class="textarea"
+              placeholder="Write your blog content here..."
+              rows="10"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Optional Image URL</label>
+          <div class="control">
+            <input
+              id="blogImage"
+              class="input"
+              type="url"
+              placeholder="Paste an image link (optional)"
+            />
+          </div>
+        </div>
+
+        <div class="has-text-centered mt-5">
+          <button class="button cta-primary" type="submit">
+            Publish Blog
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer isyellow">
@@ -426,205 +352,13 @@
         </div>
       </div>
     </footer>
+  
+    <!-- Firebase initialization -->
+     <script type="module" src="firebase.js"></script>
 
-    <!-- Navbar toggle -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const burger = document.querySelector(".navbar-burger");
-        const menu = document.getElementById("navbarBasic");
-        if (burger && menu) {
-          burger.addEventListener("click", () => {
-            burger.classList.toggle("is-active");
-            menu.classList.toggle("is-active");
-          });
-        }
-      });
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("authModal");
-        const closeBtn = modal.querySelector(".delete");
-        const modalBg = modal.querySelector(".modal-background");
-        const openButtons = document.querySelectorAll(
-          'a[aria-label="Sign in"], a[aria-label="Create account"]'
-        );
-
-        const signInForm = document.getElementById("signInForm");
-        const signUpForm = document.getElementById("signUpForm");
-        const modalTitle = document.getElementById("modalTitle");
-        const switchToSignUp = document.getElementById("switchToSignUp");
-        const switchToSignIn = document.getElementById("switchToSignIn");
-
-        openButtons.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            modal.classList.add("is-active");
-            if (btn.getAttribute("aria-label") === "Sign in") {
-              signInForm.style.display = "block";
-              signUpForm.style.display = "none";
-              modalTitle.textContent = "Sign In";
-            } else {
-              signInForm.style.display = "none";
-              signUpForm.style.display = "block";
-              modalTitle.textContent = "Sign Up";
-            }
-          });
-        });
-
-        [closeBtn, modalBg].forEach((el) =>
-          el.addEventListener("click", () =>
-            modal.classList.remove("is-active")
-          )
-        );
-
-        switchToSignUp.addEventListener("click", (e) => {
-          e.preventDefault();
-          signInForm.style.display = "none";
-          signUpForm.style.display = "block";
-          modalTitle.textContent = "Sign Up";
-        });
-        switchToSignIn.addEventListener("click", (e) => {
-          e.preventDefault();
-          signUpForm.style.display = "none";
-          signInForm.style.display = "block";
-          modalTitle.textContent = "Sign In";
-        });
-      });
-    </script>
-
-    <!-- Firebase Authentication Logic -->
-    <script type="module">
-      // Use ESM CDN imports for browsers (no bundler)
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-      import {
-        getAuth,
-        onAuthStateChanged,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        signOut,
-      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
-      // (Optional) Analytics — only if you want it
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
-
-      // Your Firebase config (keep exactly as the console shows)
-      const firebaseConfig = {
-        apiKey: "AIzaSyBeFawpN7RtHgCVoJWXtPVbLO3iU8gz8xQ",
-        authDomain: "is424-term-project.firebaseapp.com",
-        projectId: "is424-term-project",
-        storageBucket: "is424-term-project.appspot.com", // <- verify in console; adjust if needed
-        messagingSenderId: "571020263691",
-        appId: "1:571020263691:web:73fb6c4519dff2caf0e20e",
-        measurementId: "G-FL49EFV0B1",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      // Optional analytics (safe to remove if not used)
-      getAnalytics(app);
-
-      // Initialize Auth
-      const auth = getAuth(app);
-
-      // DOM elements
-      const authArea = document.getElementById("authArea");
-      const navUserEmail = document.getElementById("navUserEmail");
-      const signOutBtn = document.getElementById("signOutBtn");
-      const inlineSignOutBtn = document.getElementById("inlineSignOutBtn");
-      const welcomeSection = document.getElementById("welcomeSection");
-      const welcomeUserEmail = document.getElementById("welcomeUserEmail");
-      const signInForm = document.getElementById("signInForm");
-      const signUpForm = document.getElementById("signUpForm");
-      const signInError = document.getElementById("signInError");
-      const signUpError = document.getElementById("signUpError");
-
-      function toggleAuthUI(isSignedIn, email = "") {
-        authArea
-          .querySelectorAll('[data-auth="signed-in"]')
-          .forEach((el) => (el.style.display = isSignedIn ? "" : "none"));
-        authArea
-          .querySelectorAll('[data-auth="signed-out"]')
-          .forEach((el) => (el.style.display = isSignedIn ? "none" : ""));
-        document.getElementById("auth").style.display = isSignedIn
-          ? "none"
-          : "";
-        welcomeSection.style.display = isSignedIn ? "" : "none";
-        if (isSignedIn) {
-          if (navUserEmail) navUserEmail.textContent = email;
-          if (welcomeUserEmail) welcomeUserEmail.textContent = email;
-        }
-      }
-
-      function showError(el, msg) {
-        if (!el) return;
-        el.textContent = msg;
-        el.style.display = msg ? "" : "none";
-      }
-
-      function mapError(code) {
-        const errors = {
-          "auth/invalid-email": "Invalid email address.",
-          "auth/missing-password": "Please enter your password.",
-          "auth/weak-password": "Password must be at least 6 characters.",
-          "auth/email-already-in-use": "This email is already registered.",
-          "auth/user-not-found": "No account found with this email.",
-          "auth/wrong-password": "Incorrect email or password.",
-          "auth/invalid-credential": "Incorrect email or password.",
-        };
-        return errors[code] || "Authentication error. Please try again.";
-      }
-
-      // Observe auth state
-      onAuthStateChanged(auth, (user) => {
-        if (user && user.email) {
-          toggleAuthUI(true, user.email);
-        } else {
-          toggleAuthUI(false);
-        }
-      });
-
-      // Sign In
-      signInForm?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        showError(signInError, "");
-        const email = document.getElementById("signInEmail").value.trim();
-        const password = document.getElementById("signInPassword").value;
-        try {
-          await signInWithEmailAndPassword(auth, email, password);
-          // UI flips via onAuthStateChanged
-        } catch (err) {
-          showError(signInError, mapError(err.code));
-          console.error(err);
-        }
-      });
-
-      // Sign Up
-      signUpForm?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        showError(signUpError, "");
-        const email = document.getElementById("signUpEmail").value.trim();
-        const password = document.getElementById("signUpPassword").value;
-        try {
-          await createUserWithEmailAndPassword(auth, email, password);
-          // UI flips via onAuthStateChanged
-        } catch (err) {
-          showError(signUpError, mapError(err.code));
-          console.error(err);
-        }
-      });
-
-      // Sign Out (both buttons)
-      async function handleSignOut(e) {
-        e.preventDefault();
-        try {
-          await signOut(auth);
-        } catch (err) {
-          alert("Sign out failed. Please try again.");
-          console.error(err);
-        }
-      }
-      signOutBtn?.addEventListener("click", handleSignOut);
-      inlineSignOutBtn?.addEventListener("click", handleSignOut);
-    </script>
+      <!-- Centralized Authentication Controller -->
+      <script type="module" src="auth.js"></script>
+    <!-- blog js -->
+      <script type="module" src="blog.js"></script>
   </body>
 </html>
