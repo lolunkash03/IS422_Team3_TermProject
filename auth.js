@@ -39,7 +39,7 @@ const createBlogBtn = document.getElementById("openCreateBlogModalBtn");
    Modal Control
 ---------------------------- */
 
-function openAuthModal(mode = "signin") {
+function openAuthModal(mode ) {
   authModal.classList.add("is-active");
 
   if (mode === "signup") {
@@ -64,7 +64,7 @@ modalCloseBtn.addEventListener("click", closeAuthModal);
 document.querySelectorAll('a[href="#auth"]').forEach(btn => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-    openAuthModal("signin");
+    openAuthModal("signup") ;
   });
 });
 
