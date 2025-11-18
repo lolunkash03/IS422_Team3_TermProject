@@ -59,14 +59,15 @@ function closeAuthModal() {
 
 modalBackground.addEventListener("click", closeAuthModal);
 modalCloseBtn.addEventListener("click", closeAuthModal);
-
-// Buttons that open modal
 document.querySelectorAll('a[href="#auth"]').forEach(btn => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-    openAuthModal("signup") ;
+
+    const mode = btn.dataset.mode || "signin";  // default to signin
+    openAuthModal(mode);
   });
 });
+
 
 /* ---------------------------
    Switch between Sign In <-> Sign Up

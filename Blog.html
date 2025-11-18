@@ -58,20 +58,13 @@
             <!-- Signed-out buttons -->
             <div class="navbar-item" data-auth="signed-out">
               <div class="buttons">
-                <a
-                  class="button cta-primary is-small is-rounded"
-                  href="#auth"
-                  aria-label="Sign in"
-                >
-                  Sign In
-                </a>
-                <a
-                  class="button cta-primary is-small is-rounded"
-                  href="#auth"
-                  aria-label="Create account"
-                >
-                  Sign Up
-                </a>
+              <a class="button cta-primary is-small is-rounded" href="#auth" data-mode="signin">
+    Sign In
+</a>
+<a class="button cta-primary is-small is-rounded" href="#auth" data-mode="signup">
+    Sign Up
+</a>
+
               </div>
             </div>
 
@@ -114,9 +107,10 @@
                 Scroll Down to <strong>Sign Up</strong> or
                 <strong>Sign In</strong>! Stay Updated to our Content!
               </p>
-              <a class="button cta-primary is-medium" href="#auth"
-                >Try It Now</a
-              >
+              <a class="button cta-primary is-medium" href="#auth" data-mode="signin">
+    Try It Now
+</a>
+
             </div>
             <div class="column is-6">
               <figure class="image">
