@@ -457,7 +457,7 @@ body {
 }
 
 .contact-icon {
-  background-color: var(--dark_gold);
+  background-color: white;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -465,6 +465,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
+  border: 2px solid #ddd;
 }
 
 .contact-icon i {
