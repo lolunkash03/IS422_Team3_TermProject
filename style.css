@@ -220,6 +220,10 @@ body {
   align-items: center;
 }
 
+[data-auth] {
+  display: none;
+}
+
 /* Ensure welcome text matches button height in navbar */
 #navUserEmail {
   display: inline-flex;

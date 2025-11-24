@@ -31,6 +31,13 @@ const navAuthItems = document.querySelectorAll("[data-auth]");
 const navUserEmail = document.getElementById("navUserEmail");
 const signOutBtn = document.getElementById("signOutBtn");
 
+const setAuthVisibility = (mode) => {
+  navAuthItems.forEach((el) => {
+    const shouldShow = el.dataset.auth === mode;
+    el.style.display = shouldShow ? "flex" : "none";
+  });
+};
+
 // Admin UI elements
 const adminPanel = document.getElementById("adminPanel");
 const createBlogBtn = document.getElementById("openCreateBlogModalBtn");
@@ -115,27 +122,27 @@ signUpForm?.addEventListener("submit", async (e) => {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // Show signed-in UI
-    navAuthItems.forEach(el => {
-      el.style.display = el.dataset.auth === "signed-in" ? "block" : "none";
-    });
+    setAuthVisibility("signed-in");
 
-    navUserEmail.textContent = "Welcome, " + user.email;
+    if (navUserEmail) {
+      navUserEmail.textContent = "Welcome, " + user.email;
+    }
 
-    if (isAdmin(user)) {
-      adminPanel.style.display = "block";
-      createBlogBtn.style.display = "inline-flex"; // show "Create New Blog"
-    } else {
-      adminPanel.style.display = "none";
-      createBlogBtn.style.display = "none";
+    if (adminPanel && createBlogBtn) {
+      if (isAdmin(user)) {
+        adminPanel.style.display = "block";
+        createBlogBtn.style.display = "inline-flex"; // show "Create New Blog"
+      } else {
+        adminPanel.style.display = "none";
+        createBlogBtn.style.display = "none";
+      }
     }
 
   } else {
     // Show logged-out UI
-    navAuthItems.forEach(el => {
-      el.style.display = el.dataset.auth === "signed-out" ? "block" : "none";
-    });
-    adminPanel.style.display = "none";
-    createBlogBtn.style.display = "none";
+    setAuthVisibility("signed-out");
+    if (adminPanel) adminPanel.style.display = "none";
+    if (createBlogBtn) createBlogBtn.style.display = "none";
   }
 });
 
