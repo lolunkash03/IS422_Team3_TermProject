@@ -67,6 +67,13 @@ body {
   background: var(--light-gold) !important;
 }
 
+.hero-split,
+.hero-full-width,
+.hero-image-full,
+.hero-content-full {
+  min-height: 60vh;
+}
+
 /* Hero background fade - solid white behind text */
 .hero-split {
   position: relative;
@@ -166,21 +173,6 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
-.cta-primary.button {
-  background: var(--dark_gold);
-  border-color: transparent;
-  color: white;
-  font-weight: 700;
-  padding: 1.25rem 2.5rem;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.cta-primary.button:hover {
-  background: var(--light-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
 
 /* Compact CTA sizing for navbar buttons */
 .navbar .cta-primary.button.is-small {
@@ -220,8 +212,18 @@ body {
   align-items: center;
 }
 
-[data-auth] {
-  display: none;
+[data-auth] { visibility: hidden; }
+.auth-cached-signed-in [data-auth="signed-in"] { visibility: visible; }
+.auth-cached-signed-out [data-auth="signed-out"] { visibility: visible; }
+
+
+/* Freeze the right side so Welcome text cannot push layout */
+.auth-container {
+  min-width: 280px;
+  max-width: 280px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .auth-cached-signed-in [data-auth="signed-in"] {
@@ -239,13 +241,13 @@ body {
 
 /* Ensure welcome text matches button height in navbar */
 #navUserEmail {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 3.2rem; /* match Bulma is-medium button height */
-  padding: 0 1rem;
-  line-height: 1;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
 }
+
 
 .navbar .button.is-small {
   height: 2.25rem;
@@ -297,11 +299,6 @@ body {
     padding: 2rem 1.5rem;
   }
 
-  /* Increased spacing for navbar items */
-  .navbar-end .navbar-item {
-    padding: 2.5rem 2.5rem !important; /* Bigger horizontal spacing */
-    margin: 0 0.25rem; /* Additional spacing between items */
-  }
 
   .pr-4-desktop {
     padding-right: 0 !important;
@@ -656,6 +653,13 @@ body {
   margin-left: 0.5rem;
 }
 
+/* Keep auth fixed on right and nav fixed on left */
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
 /* Make buttons full-width in mobile view for better tapping */
 @media (max-width: 1023px) {
   .navbar-menu .buttons .button {
@@ -665,6 +669,19 @@ body {
     margin-bottom: 0.5rem;
   }
 }
+
+.navbar-start .navbar-item {
+  /* equal-sized tabs */
+  flex: 0 0 140px;          /* or width: 140px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 1rem !important;  /* smaller & consistent padding */
+  margin: 0 0.25rem;
+  font-size: larger;
+}
+
 
 /* Prevent the Sign In / Sign Up area from changing background on hover */
 .navbar-item[data-auth="signed-out"]:hover,

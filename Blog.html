@@ -40,82 +40,52 @@
   <body>
     <!-- Navbar -->
     <header>
-      <nav
-        class="navbar is-dark"
-        role="navigation"
-        aria-label="main navigation"
-      >
-        <div class="navbar-brand">
-          <a class="navbar-item brand-logo-link" href="Home.html">
-            <img
-              src="images/logo_white_gold_blue.png"
-              alt="MCM Home"
-              class="brand-logo"
-            />
-          </a>
-          <a
-            role="button"
-            class="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasic"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-logo-link" href="Home.html">
+      <img src="images/logo_white_gold_blue.png" alt="MCM home" class="brand-logo" />
+    </a>
 
-        <div id="navbarBasic" class="navbar-menu">
-          <div class="navbar-end" id="authArea">
-            <a class="navbar-item" href="Home.html">Home</a>
-            <a class="navbar-item" href="about.html">About</a>
-            <a class="navbar-item active-page" href="Blog.html">Blog</a>
-            <a class="navbar-item" href="Contact.html">Contact</a>
-            <!-- Signed-out buttons -->
-            <div class="navbar-item" data-auth="signed-out">
-              <div class="buttons">
-                <a
-                  class="button cta-primary is-medium is-rounded"
-                  href="#auth"
-                  data-mode="signin"
-                >
-                  Sign In
-                </a>
-                <a
-                  class="button cta-primary is-medium is-rounded"
-                  href="#auth"
-                  data-mode="signup"
-                >
-                  Sign Up
-                </a>
-              </div>
-            </div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-            <!-- Signed-in section -->
-            <div
-              class="navbar-item"
-              data-auth="signed-in"
-              style="display: none"
-            >
-              <span class="has-text-gold" id="navUserEmail">Welcome, User</span>
-            </div>
-            <div
-              class="navbar-item"
-              data-auth="signed-in"
-              style="display: none"
-            >
-              <a
-                class="button cta-primary is-medium is-rounded"
-                id="signOutBtn"
-                href="#"
-              >
-                Sign Out
-              </a>
-            </div>
-          </div>
+  <div id="navbarBasic" class="navbar-menu">
+
+    <!-- LEFT SIDE NAVIGATION -->
+    <div class="navbar-start">
+      <a class="navbar-item" href="Home.html">Home</a>
+      <a class="navbar-item" href="about.html">About</a>
+      <a class="navbar-item active-page" href="Blog.html">Blog</a>
+      <a class="navbar-item" href="Contact.html">Contact</a>
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="navbar-end auth-container">
+
+      <!-- signed-out -->
+      <div class="navbar-item" data-auth="signed-out">
+        <div class="buttons">
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signin">Sign In</a>
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signup">Sign Up</a>
         </div>
-      </nav>
+      </div>
+
+      <!-- signed-in -->
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <span id="navUserEmail" class="has-text-gold">Welcome</span>
+      </div>
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <a class="button cta-primary is-rounded" id="signOutBtn">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
     </header>
 
     <main>

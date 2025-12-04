@@ -9,23 +9,6 @@
     />
     <title>About | MCM</title>
 
-    <script>
-      (function () {
-        try {
-          const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
-          const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
-          document.documentElement.classList.add(
-            mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out"
-          );
-          if (mode === "signed-in" && cached?.email) {
-            const el = document.getElementById("navUserEmail");
-            if (el) el.textContent = "Welcome, " + cached.email;
-          }
-        } catch (err) {
-          document.documentElement.classList.add("auth-cached-signed-out");
-        }
-      })();
-    </script>
     <!-- Bulma -->
     <link
       rel="stylesheet"
@@ -136,95 +119,52 @@
     <div id="authArea">
       <!-- Navbar -->
       <header>
-        <nav
-          class="navbar is-dark"
-          role="navigation"
-          aria-label="main navigation"
-        >
-          <div class="navbar-brand">
-            <a
-              class="navbar-item brand-logo-link"
-              href="Home.html"
-              aria-current="page"
-              aria-label="MCM — Home"
-            >
-              <img
-                src="images/logo_white_gold_blue.png"
-                alt="MCM home"
-                class="brand-logo"
-                loading="eager"
-              />
-            </a>
-            <a
-              role="button"
-              class="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasic"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-logo-link" href="Home.html">
+      <img src="images/logo_white_gold_blue.png" alt="MCM home" class="brand-logo" />
+    </a>
 
-          <div id="navbarBasic" class="navbar-menu">
-            <div class="navbar-end">
-              <a class="navbar-item" href="Home.html">Home</a>
-              <a
-                class="navbar-item active-page"
-                href="about.html"
-                aria-current="page"
-                >About</a
-              >
-              <a class="navbar-item" href="Blog.html">Blog</a>
-              <a class="navbar-item" href="Contact.html">Contact</a>
-              <!-- Signed-out buttons -->
-              <div class="navbar-item" data-auth="signed-out">
-                <div class="buttons">
-                  <a
-                    class="button cta-primary is-medium is-rounded"
-                    href="#auth"
-                    data-mode="signin"
-                  >
-                    Sign In
-                  </a>
-                  <a
-                    class="button cta-primary is-medium is-rounded"
-                    href="#auth"
-                    data-mode="signup"
-                  >
-                    Sign Up
-                  </a>
-                </div>
-              </div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-              <!-- Signed-in section -->
-              <div
-                class="navbar-item"
-                data-auth="signed-in"
-                style="display: none"
-              >
-                <span class="has-text-gold" id="navUserEmail"
-                  >Welcome, User</span
-                >
-              </div>
-              <div
-                class="navbar-item"
-                data-auth="signed-in"
-                style="display: none"
-              >
-                <a
-                  class="button cta-primary is-medium is-rounded"
-                  id="signOutBtn"
-                  href="#"
-                >
-                  Sign Out
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
+  <div id="navbarBasic" class="navbar-menu">
+
+    <!-- LEFT SIDE NAVIGATION -->
+    <div class="navbar-start">
+      <a class="navbar-item" href="Home.html">Home</a>
+      <a class="navbar-item active-page" href="about.html">About</a>
+      <a class="navbar-item" href="Blog.html">Blog</a>
+      <a class="navbar-item" href="Contact.html">Contact</a>
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="navbar-end auth-container">
+
+      <!-- signed-out -->
+      <div class="navbar-item" data-auth="signed-out">
+        <div class="buttons">
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signin">Sign In</a>
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signup">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- signed-in -->
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <span id="navUserEmail" class="has-text-gold">Welcome</span>
+      </div>
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <a class="button cta-primary is-rounded" id="signOutBtn">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
       </header>
 
       <main>
@@ -343,17 +283,27 @@
       </script>
       <!-- Navbar toggle -->
       <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const burger = document.querySelector(".navbar-burger");
-          const menu = document.getElementById("navbarBasic");
-          if (burger && menu) {
-            burger.addEventListener("click", () => {
-              burger.classList.toggle("is-active");
-              menu.classList.toggle("is-active");
-            });
-          }
-        });
-      </script>
+(function () {
+  try {
+    const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
+    const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
+
+    // Apply the class BEFORE HTML renders — prevents flicker
+    document.documentElement.classList.add(
+      mode === "signed-in"
+        ? "auth-cached-signed-in"
+        : "auth-cached-signed-out"
+    );
+
+    // Store email temporarily — do NOT touch DOM here
+    window.__MCM_EMAIL__ = cached?.email || null;
+
+  } catch (err) {
+    document.documentElement.classList.add("auth-cached-signed-out");
+  }
+})();
+</script>
+
 
       <!-- Auth Modal -->
       <div id="authModal" class="modal">

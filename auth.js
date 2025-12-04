@@ -40,7 +40,7 @@ const hydrateAuthState = () => {
     setRootAuthClass(mode);
     const navUserEmail = document.getElementById("navUserEmail");
     if (mode === "signed-in" && cached?.email && navUserEmail) {
-      navUserEmail.textContent = "Welcome, " + cached.email;
+      navUserEmail.textContent = "Welcome";
     }
   } catch (err) {
     console.warn("Unable to read cached auth state", err);
@@ -130,7 +130,7 @@ signInForm?.addEventListener("submit", async (e) => {
     await signInWithEmailAndPassword(auth, email, password);
     persistAuthState("signed-in", email);
     setAuthVisibility("signed-in");
-    if (navUserEmail) navUserEmail.textContent = "Welcome, " + email;
+    if (navUserEmail) navUserEmail.textContent = "Welcome";
     closeAuthModal();
   } catch (err) {
     alert("Sign In Failed: " + err.message);
@@ -147,7 +147,7 @@ signUpForm?.addEventListener("submit", async (e) => {
     await createUserWithEmailAndPassword(auth, email, password);
     persistAuthState("signed-in", email);
     setAuthVisibility("signed-in");
-    if (navUserEmail) navUserEmail.textContent = "Welcome, " + email;
+    if (navUserEmail) navUserEmail.textContent = "Welcome";
     closeAuthModal();
   } catch (err) {
     alert("Sign Up Failed: " + err.message);
@@ -165,7 +165,7 @@ onAuthStateChanged(auth, (user) => {
     persistAuthState("signed-in", user.email);
 
     if (navUserEmail) {
-      navUserEmail.textContent = "Welcome, " + user.email;
+      navUserEmail.textContent = "Welcome";
     }
 
     if (adminPanel && createBlogBtn) {

@@ -9,23 +9,28 @@
     />
     <title>MCM — Home</title>
 
-    <script>
-      (function () {
-        try {
-          const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
-          const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
-          document.documentElement.classList.add(
-            mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out"
-          );
-          if (mode === "signed-in" && cached?.email) {
-            const el = document.getElementById("navUserEmail");
-            if (el) el.textContent = "Welcome, " + cached.email;
-          }
-        } catch (err) {
-          document.documentElement.classList.add("auth-cached-signed-out");
-        }
-      })();
-    </script>
+   <script>
+(function () {
+  try {
+    const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
+    const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
+
+    // Apply the class BEFORE HTML renders — prevents flicker
+    document.documentElement.classList.add(
+      mode === "signed-in"
+        ? "auth-cached-signed-in"
+        : "auth-cached-signed-out"
+    );
+
+    // Store email temporarily — do NOT touch DOM here
+    window.__MCM_EMAIL__ = cached?.email || null;
+
+  } catch (err) {
+    document.documentElement.classList.add("auth-cached-signed-out");
+  }
+})();
+</script>
+
 
     <!-- Bulma -->
     <link
@@ -48,19 +53,14 @@
           aria-label="main navigation"
         >
           <div class="navbar-brand">
-            <a
-              class="navbar-item brand-logo-link"
-              href="Home.html"
-              aria-current="page"
-              aria-label="MCM — Home"
-            >
+            <a class="navbar-item brand-logo-link" href="Home.html">
               <img
                 src="images/logo_white_gold_blue.png"
                 alt="MCM home"
                 class="brand-logo"
-                loading="eager"
               />
             </a>
+
             <a
               role="button"
               class="navbar-burger"
@@ -75,45 +75,42 @@
           </div>
 
           <div id="navbarBasic" class="navbar-menu">
-            <div class="navbar-end">
-              <a
-                class="navbar-item active-page"
-                href="Home.html"
-                aria-current="page"
-                >Home</a
-              >
+            <!-- LEFT SIDE NAVIGATION -->
+            <div class="navbar-start">
+              <a class="navbar-item active-page" href="Home.html">Home</a>
               <a class="navbar-item" href="about.html">About</a>
               <a class="navbar-item" href="Blog.html">Blog</a>
               <a class="navbar-item" href="Contact.html">Contact</a>
+            </div>
 
-              <!-- Signed-out buttons -->
+            <!-- RIGHT SIDE AUTH -->
+            <div class="navbar-end auth-container">
+              <!-- signed-out -->
               <div class="navbar-item" data-auth="signed-out">
                 <div class="buttons">
                   <a
-                    class="button cta-primary is-medium is-rounded"
+                    class="button cta-primary is-rounded"
                     href="#auth"
                     data-mode="signin"
+                    >Sign In</a
                   >
-                    Sign In
-                  </a>
                   <a
-                    class="button cta-primary is-medium is-rounded"
+                    class="button cta-primary is-rounded"
                     href="#auth"
                     data-mode="signup"
+                    >Sign Up</a
                   >
-                    Sign Up
-                  </a>
                 </div>
               </div>
 
-              <!-- Signed-in section -->
+              <!-- signed-in -->
               <div
                 class="navbar-item"
                 data-auth="signed-in"
                 style="display: none"
               >
-                <span class="has-text-gold" id="navUserEmail"
-                  >Welcome, User</span
+                <span id="navUserEmail" class="has-text-gold"
+                  >Welcome</span
                 >
               </div>
               <div
@@ -121,13 +118,9 @@
                 data-auth="signed-in"
                 style="display: none"
               >
-                <a
-                  class="button cta-primary is-medium is-rounded"
-                  id="signOutBtn"
-                  href="#"
+                <a class="button cta-primary is-rounded" id="signOutBtn"
+                  >Sign Out</a
                 >
-                  Sign Out
-                </a>
               </div>
             </div>
           </div>

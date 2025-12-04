@@ -40,95 +40,52 @@
   <body>
     <div id="authArea">
       <header>
-        <nav
-          class="navbar is-dark"
-          role="navigation"
-          aria-label="main navigation"
-        >
-          <div class="navbar-brand">
-            <a
-              class="navbar-item brand-logo-link"
-              href="Home.html"
-              aria-current="page"
-              aria-label="MCM — Home"
-            >
-              <img
-                src="images/logo_white_gold_blue.png"
-                alt="MCM home"
-                class="brand-logo"
-                loading="eager"
-              />
-            </a>
-            <a
-              role="button"
-              class="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasic"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-logo-link" href="Home.html">
+      <img src="images/logo_white_gold_blue.png" alt="MCM home" class="brand-logo" />
+    </a>
 
-          <div id="navbarBasic" class="navbar-menu">
-            <div class="navbar-end">
-              <a class="navbar-item" href="Home.html">Home</a>
-              <a class="navbar-item" href="about.html">About</a>
-              <a class="navbar-item" href="Blog.html">Blog</a>
-              <a
-                class="navbar-item active-page"
-                href="Contact.html"
-                aria-current="page"
-                >Contact</a
-              >
-              <!-- Signed-out buttons -->
-              <div class="navbar-item" data-auth="signed-out">
-                <div class="buttons">
-                  <a
-                    class="button cta-primary is-medium is-rounded"
-                    href="#auth"
-                    data-mode="signin"
-                  >
-                    Sign In
-                  </a>
-                  <a
-                    class="button cta-primary is-medium is-rounded"
-                    href="#auth"
-                    data-mode="signup"
-                  >
-                    Sign Up
-                  </a>
-                </div>
-              </div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-              <!-- Signed-in section -->
-              <div
-                class="navbar-item"
-                data-auth="signed-in"
-                style="display: none"
-              >
-                <span class="has-text-gold" id="navUserEmail"
-                  >Welcome, User</span
-                >
-              </div>
-              <div
-                class="navbar-item"
-                data-auth="signed-in"
-                style="display: none"
-              >
-                <a
-                  class="button cta-primary is-medium is-rounded"
-                  id="signOutBtn"
-                  href="#"
-                >
-                  Sign Out
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
+  <div id="navbarBasic" class="navbar-menu">
+
+    <!-- LEFT SIDE NAVIGATION -->
+    <div class="navbar-start">
+      <a class="navbar-item" href="Home.html">Home</a>
+      <a class="navbar-item" href="about.html">About</a>
+      <a class="navbar-item" href="Blog.html">Blog</a>
+      <a class="navbar-item active-page" href="Contact.html">Contact</a>
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="navbar-end auth-container">
+
+      <!-- signed-out -->
+      <div class="navbar-item" data-auth="signed-out">
+        <div class="buttons">
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signin">Sign In</a>
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signup">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- signed-in -->
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <span id="navUserEmail" class="has-text-gold">Welcome, User</span>
+      </div>
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <a class="button cta-primary is-rounded" id="signOutBtn">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
       </header>
 
       <!-- Hero Section -->
@@ -212,39 +169,7 @@
             </div>
           </div>
         </div>
-      </section>
-      <!-- Welcome Message (Visible when logged in) -->
-      <section class="section" id="welcomeSection" style="display: none">
-        <div class="container">
-          <div class="box has-border-left-gold">
-            <div class="columns is-vcentered">
-              <div class="column is-8">
-                <h2 class="title is-4 has-text-navy">
-                  Welcome back,
-                  <span id="welcomeUserEmail">user@example.com</span>!
-                </h2>
-                <p class="is-size-6" style="color: var(--ink2)">
-                  You are successfully signed in. Explore the blog, check out
-                  new content, or sign out securely anytime.
-                </p>
-                <div class="buttons mt-4">
-                  <a class="button cta-primary" href="Home.html">Go to Home</a>
-                  <a class="button" id="inlineSignOutBtn">Sign Out</a>
-                </div>
-              </div>
-              <div class="column is-4">
-                <figure class="image">
-                  <img
-                    src="images/brand_profile2.png"
-                    alt="Mentor"
-                    loading="lazy"
-                  />
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </section>      
 
       <!-- Auth Modal -->
       <div id="authModal" class="modal">
