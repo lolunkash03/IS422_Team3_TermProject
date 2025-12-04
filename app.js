@@ -16,7 +16,8 @@ const BASE_URL =
   process.env.BASE_URL || `http://localhost:${process.env.PORT || 0}/`; // actual port resolved after server starts
 
 // Visible browser, generous timeout for slow networks
-const TIMEOUT_MS = Number(process.env.TIMEOUT_MS || 40000);
+const TIMEOUT_MS = Number(process.env.TIMEOUT_MS || 1000);
+let lastDialogMessage = null;
 
 // Admin credentials (for blog creation)
 const adminCreds = {
@@ -40,6 +41,17 @@ async function fillInput(page, selector, value) {
   const el = await page.waitForSelector(selector, { visible: true });
   await el.click({ clickCount: 3 });
   await el.type(value);
+}
+
+async function waitForAuthMode(page, mode, timeout = 3000) {
+  const className =
+    mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out";
+  await page.waitForFunction(
+    (expectedClass) =>
+      document.documentElement.classList.contains(expectedClass),
+    { timeout },
+    className
+  );
 }
 
 async function openAuth(page, mode) {
@@ -78,16 +90,22 @@ async function openAuth(page, mode) {
 }
 
 async function waitForSignedOut(page) {
-  // Any element visible only when logged out
-  await page.waitForSelector('[data-auth="signed-out"]', { visible: true });
+  await waitForAuthMode(page, "signed-out", 5000);
+  await page.waitForSelector('[data-auth="signed-out"]', {
+    visible: true,
+    timeout: 5000,
+  });
 }
 
 async function waitForSignedIn(page) {
-  // Wait for sign-out button to be visible
-  await page.waitForFunction(() => {
-    const el = document.querySelector("#signOutBtn");
-    return el && window.getComputedStyle(el).display !== "none";
-  });
+  await waitForAuthMode(page, "signed-in", 5000);
+  await page.waitForFunction(
+    () => {
+      const el = document.querySelector("#signOutBtn");
+      return el && window.getComputedStyle(el).display !== "none";
+    },
+    { timeout: 5000 }
+  );
 }
 
 async function ensureNavReadyForClick(page) {
@@ -144,15 +162,26 @@ async function signUpNewUser(page) {
 }
 
 async function signInAsAdmin(page) {
+  lastDialogMessage = null;
   console.log("Signing in as admin:", adminCreds.email);
   await openAuth(page, "signin");
   await fillInput(page, "#signInEmail", adminCreds.email);
   await fillInput(page, "#signInPassword", adminCreds.password);
 
-  await Promise.all([
-    page.click('#signInForm button[type="submit"]'),
-    waitForSignedIn(page),
-  ]);
+  try {
+    await Promise.all([
+      page.click('#signInForm button[type="submit"]'),
+      waitForSignedIn(page),
+    ]);
+  } catch (err) {
+    const detail = lastDialogMessage
+      ? ` (page dialog: ${lastDialogMessage})`
+      : "";
+    throw new Error(
+      `Admin sign in failed${detail}: ${err.message || err}. ` +
+        "Double-check admin credentials and that Firebase auth allows email/password sign-in."
+    );
+  }
 
   console.log("Admin sign in success.");
   await page.waitForSelector("#openCreateBlogModalBtn", { visible: true });
@@ -269,6 +298,11 @@ async function main() {
 
   const page = await browser.newPage();
   page.setDefaultTimeout(TIMEOUT_MS);
+  page.on("dialog", async (dialog) => {
+    lastDialogMessage = dialog.message();
+    console.warn("[browser dialog]", dialog.type(), dialog.message());
+    await dialog.accept().catch(() => {});
+  });
 
   // Log browser console/errors to help diagnose issues
   page.on("console", (msg) =>
