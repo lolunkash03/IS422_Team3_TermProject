@@ -192,6 +192,7 @@ async function createBlog(page) {
   const content = ["This blog was created by the Puppeteer 67."].join(" ");
 
   console.log("Creating blog:", title);
+
   await page.click("#openCreateBlogModalBtn");
   await page.waitForSelector("#createBlogModal.is-active", { visible: true });
 
