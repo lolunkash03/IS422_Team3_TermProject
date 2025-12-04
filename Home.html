@@ -8,6 +8,41 @@
       content="MCM — Reclaim your identity. Realign your energy. Build your legacy—without leaving the 9–5."
     />
     <title>MCM — Home</title>
+    <script>
+      (function () {
+        try {
+          const cached = JSON.parse(
+            localStorage.getItem("mcm-auth-state") || "null"
+          );
+          const mode =
+            cached?.mode === "signed-in" ? "signed-in" : "signed-out";
+          document.documentElement.classList.add(
+            mode === "signed-in"
+              ? "auth-cached-signed-in"
+              : "auth-cached-signed-out"
+          );
+        } catch (err) {
+          document.documentElement.classList.add("auth-cached-signed-out");
+        }
+      })();
+    </script>
+    <style>
+      [data-auth] {
+        display: none !important;
+      }
+      .auth-cached-signed-in [data-auth="signed-in"] {
+        display: flex !important;
+      }
+      .auth-cached-signed-in [data-auth="signed-out"] {
+        display: none !important;
+      }
+      .auth-cached-signed-out [data-auth="signed-out"] {
+        display: flex !important;
+      }
+      .auth-cached-signed-out [data-auth="signed-in"] {
+        display: none !important;
+      }
+    </style>
 
     <!-- Bulma -->
     <link
@@ -89,20 +124,12 @@
               </div>
 
               <!-- Signed-in section -->
-              <div
-                class="navbar-item"
-                data-auth="signed-in"
-                style="display: none"
-              >
+              <div class="navbar-item" data-auth="signed-in">
                 <span class="has-text-gold" id="navUserEmail"
                   >Welcome, User</span
                 >
               </div>
-              <div
-                class="navbar-item"
-                data-auth="signed-in"
-                style="display: none"
-              >
+              <div class="navbar-item" data-auth="signed-in">
                 <a
                   class="button cta-primary is-medium is-rounded"
                   id="signOutBtn"
@@ -430,34 +457,6 @@
           </div>
         </div>
       </footer>
-      <script>
-        // Mobile menu toggle with null checks
-        document.addEventListener("DOMContentLoaded", () => {
-          const burger = document.querySelector(".navbar-burger");
-          const menu = document.getElementById("navbarBasic");
-          if (burger && menu) {
-            burger.addEventListener("click", () => {
-              burger.classList.toggle("is-active");
-              menu.classList.toggle("is-active");
-              const expanded = burger.getAttribute("aria-expanded") === "true";
-              burger.setAttribute("aria-expanded", String(!expanded));
-            });
-          }
-        });
-      </script>
-      <!-- Navbar toggle -->
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const burger = document.querySelector(".navbar-burger");
-          const menu = document.getElementById("navbarBasic");
-          if (burger && menu) {
-            burger.addEventListener("click", () => {
-              burger.classList.toggle("is-active");
-              menu.classList.toggle("is-active");
-            });
-          }
-        });
-      </script>
       <!-- Firebase initialization -->
       <script type="module" src="firebase.js"></script>
 
