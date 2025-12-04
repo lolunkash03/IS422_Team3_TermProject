@@ -173,7 +173,6 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
-
 /* Compact CTA sizing for navbar buttons */
 .navbar .cta-primary.button.is-small {
   padding: 0.65rem 1.25rem;
@@ -212,10 +211,15 @@ body {
   align-items: center;
 }
 
-[data-auth] { visibility: hidden; }
-.auth-cached-signed-in [data-auth="signed-in"] { visibility: visible; }
-.auth-cached-signed-out [data-auth="signed-out"] { visibility: visible; }
-
+[data-auth] {
+  visibility: hidden;
+}
+.auth-cached-signed-in [data-auth="signed-in"] {
+  visibility: visible;
+}
+.auth-cached-signed-out [data-auth="signed-out"] {
+  visibility: visible;
+}
 
 /* Freeze the right side so Welcome text cannot push layout */
 .auth-container {
@@ -248,7 +252,6 @@ body {
   display: inline-block;
 }
 
-
 .navbar .button.is-small {
   height: 2.25rem;
   display: inline-flex;
@@ -276,10 +279,43 @@ body {
     font-size: 2.25rem;
   }
 }
-/* Mobile adjustments */
+/* Fix mobile navbar layout */
 @media (max-width: 1023px) {
-  .navbar-end .navbar-item {
-    padding: 0.75rem 1.5rem !important;
+  /* Desktop only — let Bulma handle mobile collapse */
+  @media (min-width: 1024px) {
+    .navbar-menu {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  /* Make nav links full width */
+  .navbar-start .navbar-item {
+    flex: none !important;
+    width: 100% !important;
+    padding: 0.75rem 1.25rem !important;
+    margin: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Fix active page appearance on mobile */
+  .navbar-start .navbar-item.active-page {
+    width: 100% !important;
+    background: var(--dark_gold) !important;
+    color: white !important;
+  }
+
+  /* Sign-in/up buttons full width */
+  .navbar-end .buttons .button {
+    width: 100% !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .auth-container {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    justify-content: center !important;
   }
 }
 
@@ -298,7 +334,6 @@ body {
     height: auto;
     padding: 2rem 1.5rem;
   }
-
 
   .pr-4-desktop {
     padding-right: 0 !important;
@@ -653,13 +688,6 @@ body {
   margin-left: 0.5rem;
 }
 
-/* Keep auth fixed on right and nav fixed on left */
-.navbar-menu {
-  display: flex;
-  justify-content: space-between;
-  
-}
-
 /* Make buttons full-width in mobile view for better tapping */
 @media (max-width: 1023px) {
   .navbar-menu .buttons .button {
@@ -672,16 +700,15 @@ body {
 
 .navbar-start .navbar-item {
   /* equal-sized tabs */
-  flex: 0 0 140px;          /* or width: 140px; */
+  flex: 0 0 140px; /* or width: 140px; */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0 1rem !important;  /* smaller & consistent padding */
+  padding: 0 1rem !important; /* smaller & consistent padding */
   margin: 0 0.25rem;
   font-size: larger;
 }
-
 
 /* Prevent the Sign In / Sign Up area from changing background on hover */
 .navbar-item[data-auth="signed-out"]:hover,
