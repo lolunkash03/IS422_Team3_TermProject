@@ -160,9 +160,7 @@ async function signInAsAdmin(page) {
 
 async function createBlog(page) {
   const title = `Automated Blog ${new Date().toISOString()}`;
-  const content = ["This blog was created by the Puppeteer smoke test."].join(
-    " "
-  );
+  const content = ["This blog was created by the Puppeteer 67."].join(" ");
 
   console.log("Creating blog:", title);
   await page.click("#openCreateBlogModalBtn");
