@@ -8,6 +8,7 @@
       content="About MCM — Reclaim your identity. Realign your energy. Build your legacy—without leaving the 9–5."
     />
     <title>About | MCM</title>
+
     <script>
       (function () {
         try {
@@ -16,29 +17,15 @@
           document.documentElement.classList.add(
             mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out"
           );
+          if (mode === "signed-in" && cached?.email) {
+            const el = document.getElementById("navUserEmail");
+            if (el) el.textContent = "Welcome, " + cached.email;
+          }
         } catch (err) {
           document.documentElement.classList.add("auth-cached-signed-out");
         }
       })();
     </script>
-    <style>
-      [data-auth] {
-        display: none !important;
-      }
-      .auth-cached-signed-in [data-auth="signed-in"] {
-        display: flex !important;
-      }
-      .auth-cached-signed-in [data-auth="signed-out"] {
-        display: none !important;
-      }
-      .auth-cached-signed-out [data-auth="signed-out"] {
-        display: flex !important;
-      }
-      .auth-cached-signed-out [data-auth="signed-in"] {
-        display: none !important;
-      }
-    </style>
-
     <!-- Bulma -->
     <link
       rel="stylesheet"
@@ -216,6 +203,7 @@
               <div
                 class="navbar-item"
                 data-auth="signed-in"
+                style="display: none"
               >
                 <span class="has-text-gold" id="navUserEmail"
                   >Welcome, User</span
@@ -224,6 +212,7 @@
               <div
                 class="navbar-item"
                 data-auth="signed-in"
+                style="display: none"
               >
                 <a
                   class="button cta-primary is-medium is-rounded"
@@ -283,6 +272,21 @@
         </section>
       </main>
       <script>
+        // Mobile menu toggle with null checks
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+              const expanded = burger.getAttribute("aria-expanded") === "true";
+              burger.setAttribute("aria-expanded", String(!expanded));
+            });
+          }
+        });
+      </script>
+      <script>
         // Highlight the card closest to the viewport center
         document.addEventListener("DOMContentLoaded", () => {
           const scroller = document.getElementById("cardScroller");
@@ -335,6 +339,19 @@
             setUniformHeights();
             updateActiveCard();
           });
+        });
+      </script>
+      <!-- Navbar toggle -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+            });
+          }
         });
       </script>
 

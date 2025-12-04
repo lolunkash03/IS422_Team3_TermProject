@@ -262,9 +262,9 @@ async function main() {
   }
 
   const browser = await puppeteer.launch({
-    headless: false, // 👈 ALWAYS show test Chrome
-    slowMo: 80, // 👈 Slow down actions so you can see them
-    defaultViewport: null, // 👈 Normal window size
+    headless: false, //  always show test Chrome
+    slowMo: 80, //  Slow down actions so you can see them
+    defaultViewport: null, //  Normal window size
     executablePath:
       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // Mac path
   });

@@ -224,6 +224,19 @@ body {
   display: none;
 }
 
+.auth-cached-signed-in [data-auth="signed-in"] {
+  display: flex !important;
+}
+.auth-cached-signed-in [data-auth="signed-out"] {
+  display: none !important;
+}
+.auth-cached-signed-out [data-auth="signed-out"] {
+  display: flex !important;
+}
+.auth-cached-signed-out [data-auth="signed-in"] {
+  display: none !important;
+}
+
 /* Ensure welcome text matches button height in navbar */
 #navUserEmail {
   display: inline-flex;

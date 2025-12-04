@@ -8,6 +8,7 @@
       content="MCM Blog — Firebase Authentication Implementation"
     />
     <title>MCM — Blog</title>
+
     <script>
       (function () {
         try {
@@ -16,29 +17,15 @@
           document.documentElement.classList.add(
             mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out"
           );
+          if (mode === "signed-in" && cached?.email) {
+            const el = document.getElementById("navUserEmail");
+            if (el) el.textContent = "Welcome, " + cached.email;
+          }
         } catch (err) {
           document.documentElement.classList.add("auth-cached-signed-out");
         }
       })();
     </script>
-    <style>
-      [data-auth] {
-        display: none !important;
-      }
-      .auth-cached-signed-in [data-auth="signed-in"] {
-        display: flex !important;
-      }
-      .auth-cached-signed-in [data-auth="signed-out"] {
-        display: none !important;
-      }
-      .auth-cached-signed-out [data-auth="signed-out"] {
-        display: flex !important;
-      }
-      .auth-cached-signed-out [data-auth="signed-in"] {
-        display: none !important;
-      }
-    </style>
-
     <!-- Bulma & Font Awesome -->
     <link
       rel="stylesheet"
@@ -109,12 +96,14 @@
             <div
               class="navbar-item"
               data-auth="signed-in"
+              style="display: none"
             >
               <span class="has-text-gold" id="navUserEmail">Welcome, User</span>
             </div>
             <div
               class="navbar-item"
               data-auth="signed-in"
+              style="display: none"
             >
               <a
                 class="button cta-primary is-medium is-rounded"
