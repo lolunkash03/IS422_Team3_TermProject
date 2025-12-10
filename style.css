@@ -1,0 +1,736 @@
+/* styles.css */
+:root {
+  --navy: #042a4d;
+  --dark_gold: #b08d57;
+  --ink: #282828;
+  --ink2: #2e2e2e;
+  --soft-gray: #edeae3;
+  --light-gold: #c49a6c;
+  --bright-yellow: #ffc71f;
+  --forest-green: #4f704d;
+  --green: #4c8c4a;
+  --bluer-navy: #2a3d66;
+  --white: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--ink);
+  background: var(--soft-gray);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  min-height: 5rem;
+}
+.navbar-burger {
+  height: 5rem;
+}
+
+/* Active page styling - using your colors */
+.navbar-item.active-page {
+  background: var(--dark_gold) !important;
+  color: var(--white) !important; /* Or use --light-gold for highlight */
+  font-weight: 600;
+}
+
+/* Navbar */
+.navbar.is-dark {
+  background: var(--navy);
+}
+
+/* Logo styling - minimal padding */
+.navbar-brand .brand-logo-link {
+  padding: 0.001rem 0.01rem !important; /* Very minimal padding */
+}
+
+.brand-logo {
+  height: 130px; /* Adjust as needed */
+  max-height: none !important; /* Override Bulma restrictions */
+  width: auto;
+}
+
+/* Increased spacing for navbar items */
+.navbar-end .navbar-item {
+  padding: 2.5rem 2.5rem !important; /* Bigger horizontal spacing */
+  margin: 0 0.25rem; /* Additional spacing between items */
+  font-size: larger;
+}
+
+.navbar .navbar-item:hover {
+  background: var(--light-gold) !important;
+}
+
+.hero-split,
+.hero-full-width,
+.hero-image-full,
+.hero-content-full {
+  min-height: 60vh;
+}
+
+/* Hero background fade - solid white behind text */
+.hero-split {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(
+      to left,
+      rgba(237, 234, 227, 1) 0%,
+      rgba(237, 234, 227, 1) 25%,
+      rgba(237, 234, 227, 0.8) 40%,
+      rgba(0, 0, 0, 0.5) 70%
+    ),
+    url("https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1600&auto=format&fit=crop");
+  background-size: cover;
+  background-position: left center;
+}
+
+.hero-split .container {
+  position: relative;
+  z-index: 2;
+}
+
+.headline-xl {
+  font-size: 3rem;
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--ink);
+}
+.subcopy {
+  color: var(--ink); /* This is black */
+}
+
+/* Hero section minimal CSS */
+.hero-full-width {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.columns.is-gapless {
+  margin: 0 !important;
+}
+
+.hero-image-full {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.hero-content-full {
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  background: var(--soft-gray);
+}
+
+.hero-image-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-subcopy-full {
+  color: var(--ink2);
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.headline-full {
+  font-size: 3rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 2rem;
+}
+
+/* Custom color classes for Bulma */
+.has-text-navy {
+  color: var(--navy) !important;
+}
+.has-text-gold {
+  color: var(--dark_gold) !important;
+}
+.has-background-soft-gray {
+  background-color: var(--soft-gray) !important;
+}
+.has-border-left-gold {
+  border-left: 4px solid var(--dark_gold) !important;
+}
+.has-border-bottom-light {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Compact CTA sizing for navbar buttons */
+.navbar .cta-primary.button.is-small {
+  padding: 0.65rem 1.25rem;
+  font-size: 0.9rem;
+  border-radius: 999px;
+}
+
+/* Align welcome text with navbar buttons */
+.navbar .navbar-item[data-auth="signed-in"] {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Normalize navbar item alignment/height */
+.navbar .navbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1.2;
+}
+
+.navbar .navbar-item .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.navbar .navbar-item span,
+.navbar .navbar-item a {
+  display: inline-flex;
+  align-items: center;
+}
+
+[data-auth] {
+  visibility: hidden;
+}
+.auth-cached-signed-in [data-auth="signed-in"] {
+  visibility: visible;
+}
+.auth-cached-signed-out [data-auth="signed-out"] {
+  visibility: visible;
+}
+
+/* Freeze the right side so Welcome text cannot push layout */
+.auth-container {
+  min-width: 280px;
+  max-width: 280px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.auth-cached-signed-in [data-auth="signed-in"] {
+  display: flex !important;
+}
+.auth-cached-signed-in [data-auth="signed-out"] {
+  display: none !important;
+}
+.auth-cached-signed-out [data-auth="signed-out"] {
+  display: flex !important;
+}
+.auth-cached-signed-out [data-auth="signed-in"] {
+  display: none !important;
+}
+
+/* Ensure welcome text matches button height in navbar */
+#navUserEmail {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.navbar .button.is-small {
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.2rem;
+  line-height: 1;
+}
+
+/* Footer */
+.footer.isyellow {
+  margin-top: auto;
+  background-color: var(--dark_gold);
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-content-full {
+    padding: 2.5rem;
+  }
+}
+@media (max-width: 1024px) {
+  .headline-xl {
+    font-size: 2.25rem;
+  }
+}
+/* Fix mobile navbar layout */
+@media (max-width: 1023px) {
+  /* Desktop only — let Bulma handle mobile collapse */
+  @media (min-width: 1024px) {
+    .navbar-menu {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  /* Make nav links full width */
+  .navbar-start .navbar-item {
+    flex: none !important;
+    width: 100% !important;
+    padding: 0.75rem 1.25rem !important;
+    margin: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Fix active page appearance on mobile */
+  .navbar-start .navbar-item.active-page {
+    width: 100% !important;
+    background: var(--dark_gold) !important;
+    color: white !important;
+  }
+
+  /* Sign-in/up buttons full width */
+  .navbar-end .buttons .button {
+    width: 100% !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .auth-container {
+    max-width: 100% !important;
+    min-width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-image-full,
+  .hero-content-full {
+    height: auto;
+    min-height: auto;
+  }
+
+  .hero-image-full {
+    height: 50vh;
+  }
+
+  .hero-content-full {
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .pr-4-desktop {
+    padding-right: 0 !important;
+  }
+}
+
+/* Responsive padding adjustments */
+@media (max-width: 768px) {
+  .pr-4 {
+    padding-right: 0 !important;
+  }
+  .pl-5 {
+    padding-left: 1.5rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .headline-full {
+    font-size: 1.7rem;
+  }
+
+  .hero-content-full {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero-image-full {
+    height: 40vh;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .headline-full {
+    font-size: 2.5rem;
+  }
+
+  .hero-content-full {
+    padding: 3rem;
+  }
+}
+
+/* Stats Section */
+.stats-section {
+  padding: 6rem 1.5rem;
+  background: white;
+}
+
+.stats-container {
+  background: var(--soft-gray);
+  padding: 3rem;
+  border-left: 4px solid var(--dark_gold);
+  border-radius: 8px;
+}
+
+.stats-content {
+  margin-bottom: 2.5rem;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.stat-check {
+  font-size: 1.5rem;
+  color: var(--forest-green);
+  font-weight: bold;
+}
+
+.question-content {
+  text-align: center;
+}
+
+.question-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.question-subtitle {
+  font-size: 1.2rem;
+  color: var(--ink2);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.question-answer {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark_gold);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.question-closing {
+  font-size: 1rem;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* Image styling */
+.stats-image-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stats-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 4rem 1.5rem;
+  }
+
+  /* Stack columns vertically on mobile */
+  .columns.is-variable.is-6 {
+    margin: 0;
+  }
+
+  /* Image comes first on mobile */
+  .columns.is-vcentered .column.is-6:first-child {
+    order: 2; /* Content comes after image */
+  }
+
+  .columns.is-vcentered .column.is-6:last-child {
+    order: 1; /* Image comes first */
+  }
+
+  .stats-container {
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stats-image {
+    height: 300px;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .stats-section {
+    padding: 3rem 1rem;
+  }
+
+  .stats-container {
+    padding: 1.5rem;
+  }
+
+  .stats-image {
+    height: 250px;
+  }
+
+  .question-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Footer */
+.footer.isyellow {
+  margin-top: auto;
+  background-color: var(--dark_gold);
+  color: white;
+}
+
+/* Contact Page Specific Styles */
+.contact-hero {
+  background: linear-gradient(
+      to right,
+      var(--soft-gray) 0%,
+      var(--soft-gray) 60%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    url("https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 1.5rem;
+}
+
+.contact-headline {
+  font-size: 3rem;
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+}
+
+.contact-subcopy {
+  color: var(--ink2);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border-top: 4px solid var(--dark_gold);
+}
+
+.contact-icon {
+  background-color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  border: 2px solid #ddd;
+}
+
+.contact-icon i {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.contact-method-title {
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.contact-method-desc {
+  color: var(--ink2);
+  margin-bottom: 1.5rem;
+}
+
+.cta-primary.button {
+  background: var(--dark_gold);
+  border-color: transparent;
+  color: white;
+  font-weight: 700;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-primary.button:hover {
+  background: var(--light-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form-box {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  border-top: 4px solid var(--dark_gold);
+}
+
+.form-label {
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.input,
+.textarea {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--dark_gold);
+  box-shadow: 0 0 0 2px rgba(176, 141, 87, 0.2);
+}
+
+/* Custom color classes for Bulma */
+.has-text-navy {
+  color: var(--navy) !important;
+}
+.has-text-gold {
+  color: var(--dark_gold) !important;
+}
+.has-background-soft-gray {
+  background-color: var(--soft-gray) !important;
+}
+.has-border-left-gold {
+  border-left: 4px solid var(--dark_gold) !important;
+}
+.has-border-bottom-light {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .contact-headline {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-headline {
+    font-size: 2rem;
+  }
+
+  .contact-card,
+  .contact-form-box {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-headline {
+    font-size: 1.7rem;
+  }
+
+  .contact-hero {
+    padding: 3rem 1rem;
+  }
+}
+
+/* Spacing between buttons in navbar */
+.navbar .buttons .button + .button {
+  margin-left: 0.5rem;
+}
+
+/* Make buttons full-width in mobile view for better tapping */
+@media (max-width: 1023px) {
+  .navbar-menu .buttons .button {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.navbar-start .navbar-item {
+  /* equal-sized tabs */
+  flex: 0 0 140px; /* or width: 140px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 1rem !important; /* smaller & consistent padding */
+  margin: 0 0.25rem;
+  font-size: larger;
+}
+
+/* Prevent the Sign In / Sign Up area from changing background on hover */
+.navbar-item[data-auth="signed-out"]:hover,
+.navbar-item[data-auth="signed-in"]:hover {
+  background: var(--navy) !important; /* keep dark navy background */
+}
+
+/* Ensure the buttons inside still keep their own hover styles */
+.navbar .navbar-item[data-auth] .button:hover {
+  background-color: var(--light-gold) !important;
+  color: var(--white) !important;
+  border-color: transparent !important;
+}
+
+.modal-card {
+  width: 420px;
+  border-radius: 12px;
+}
+.modal-card-head {
+  background: var(--dark_gold);
+  color: white;
+}
+.modal-card-title {
+  font-weight: 700;
+}

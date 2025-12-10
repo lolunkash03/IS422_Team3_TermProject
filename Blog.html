@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="MCM Blog — Firebase Authentication Implementation"
+    />
+    <title>MCM — Blog</title>
+
+    <script>
+      (function () {
+        try {
+          const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
+          const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
+          document.documentElement.classList.add(
+            mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out"
+          );
+          if (mode === "signed-in" && cached?.email) {
+            const el = document.getElementById("navUserEmail");
+            if (el) el.textContent = "Welcome, " + cached.email;
+          }
+        } catch (err) {
+          document.documentElement.classList.add("auth-cached-signed-out");
+        }
+      })();
+    </script>
+    <!-- Bulma & Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-logo-link" href="Home.html">
+      <img src="images/logo_white_gold_blue.png" alt="MCM home" class="brand-logo" />
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasic" class="navbar-menu">
+
+    <!-- LEFT SIDE NAVIGATION -->
+    <div class="navbar-start">
+      <a class="navbar-item" href="Home.html">Home</a>
+      <a class="navbar-item" href="about.html">About</a>
+      <a class="navbar-item active-page" href="Blog.html">Blog</a>
+      <a class="navbar-item" href="Contact.html">Contact</a>
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="navbar-end auth-container">
+
+      <!-- signed-out -->
+      <div class="navbar-item" data-auth="signed-out">
+        <div class="buttons">
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signin">Sign In</a>
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signup">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- signed-in -->
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <span id="navUserEmail" class="has-text-gold">Welcome</span>
+      </div>
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <a class="button cta-primary is-rounded" id="signOutBtn">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    </header>
+
+    <main>
+      <!-- Blog Header -->
+      <section class="section">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-6">
+              <h1 class="title is-2 has-text-weight-bold has-text-navy">
+                Welcome to MY BLOG!
+              </h1>
+              <p class="subtitle is-5" style="color: var(--ink)">
+                Scroll Down to <strong>Sign Up</strong> or
+                <strong>Sign In</strong>! Stay Updated to our Content!
+              </p>
+              <a
+                class="button cta-primary is-medium"
+                href="#auth"
+                data-mode="signup"
+              >
+                Try It Now
+              </a>
+            </div>
+            <div class="column is-6">
+              <figure class="image">
+                <img
+                  src="images/brand_profile1.png"
+                  alt="Civilian Stability Cycle"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Auth Modal -->
+      <div id="authModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title" id="modalTitle">Sign In</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Sign In -->
+            <form id="signInForm" style="display: block">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInPassword"
+                    class="input"
+                    type="password"
+                    placeholder="••••••"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Sign In
+              </button>
+              <p class="mt-3 has-text-centered">
+                Don't have an account?
+                <a id="switchToSignUp">Sign Up</a>
+              </p>
+            </form>
+
+            <!-- Sign Up -->
+            <form id="signUpForm" style="display: none">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpPassword"
+                    class="input"
+                    type="password"
+                    placeholder="At least 6 characters"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Create Account
+              </button>
+              <p class="mt-3 has-text-centered">
+                Already have an account?
+                <a id="switchToSignIn">Sign In</a>
+              </p>
+            </form>
+          </section>
+        </div>
+      </div>
+      <!-- Blog Section -->
+      <section class="section" id="blogSection">
+        <div class="container">
+          <div class="level mb-5">
+            <div class="level-left">
+              <h2 class="title is-3 has-text-navy">Latest Blogs</h2>
+            </div>
+            <div class="level-right">
+              <!-- Only show if admin -->
+              <button
+                id="openCreateBlogModalBtn"
+                class="button cta-primary is-rounded"
+                style="display: none"
+              >
+                <span class="icon"><i class="fas fa-pen-nib"></i></span>
+                <span>Create New Blog</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="blogCards" class="columns is-multiline">
+            <!-- Blog cards dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+      <!-- Only visible to admins -->
+      <section class="section" id="adminPanel" style="display: none">
+        <div class="container">
+          <h2 class="title is-4 has-text-navy">Admin Panel</h2>
+
+          <!-- Manage existing blogs (KEEP) -->
+          <div class="box">
+            <h3 class="subtitle is-5 has-text-gold">Manage Published Blogs</h3>
+            <div id="adminBlogList" class="content">
+              <!-- Admin view of blogs (with Edit/Delete buttons) -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Creation Modal -->
+      <div id="createBlogModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card" style="width: 70%">
+          <header class="modal-card-head">
+            <p class="modal-card-title has-text-navy">Create a New Blog Post</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <form id="createBlogForm">
+              <div class="field">
+                <label class="label">Blog Title</label>
+                <div class="control">
+                  <input
+                    id="blogTitle"
+                    class="input"
+                    type="text"
+                    placeholder="Enter blog title"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Content</label>
+                <div class="control">
+                  <textarea
+                    id="blogContent"
+                    class="textarea"
+                    placeholder="Write your blog content here..."
+                    rows="10"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Optional Image URL</label>
+                <div class="control">
+                  <input
+                    id="blogImage"
+                    class="input"
+                    type="url"
+                    placeholder="Paste an image link (optional)"
+                  />
+                </div>
+              </div>
+
+              <div class="has-text-centered mt-5">
+                <button class="button cta-primary" type="submit">
+                  Publish Blog
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+      <!-- Blog View Modal -->
+      <div id="viewBlogModal" class="modal">
+        <div class="modal-background"></div>
+
+        <div class="modal-card" style="width: 70%">
+          <header class="modal-card-head">
+            <p id="viewBlogTitle" class="modal-card-title has-text-navy"></p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+
+          <section class="modal-card-body">
+            <p id="viewBlogDate" class="is-size-7 has-text-grey mb-3"></p>
+
+            <figure
+              id="viewBlogImageWrapper"
+              class="image mb-4"
+              style="display: none"
+            >
+              <img id="viewBlogImage" />
+            </figure>
+
+            <div
+              id="viewBlogContent"
+              class="content"
+              style="white-space: pre-wrap"
+            ></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer isyellow">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424
+            &nbsp;|&nbsp; 2025. All rights reserved.
+          </p>
+          <div class="social-icons mt-4">
+            <a
+              href="https://www.linkedin.com/in/dawnellkelly/"
+              class="has-text-white mr-4"
+              ><i class="fab fa-linkedin fa-lg"></i
+            ></a>
+
+            <a
+              href="https://www.youtube.com/@theoptimizedveteran"
+              target="_blank"
+              class="has-text-white"
+              ><i class="fab fa-youtube fa-lg"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Firebase initialization -->
+    <script type="module" src="firebase.js"></script>
+
+    <!-- Centralized Authentication Controller -->
+    <script type="module" src="auth.js"></script>
+    <!-- blog js -->
+    <script type="module" src="blog.js"></script>
+  </body>
+</html>

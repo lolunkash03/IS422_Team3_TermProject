@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="About MCM — Reclaim your identity. Realign your energy. Build your legacy—without leaving the 9–5."
+    />
+    <title>About | MCM</title>
+
+    <!-- Bulma -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .about-hero {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        line-height: 0;
+        background: transparent;
+      }
+      .about-hero img {
+        width: 100%;
+        height: clamp(280px, 70vh, 640px);
+        object-fit: cover;
+        display: block;
+      }
+
+      .about-section {
+        background-color: var(--soft-gray);
+        padding: 3rem 1rem 5rem;
+        text-align: center;
+      }
+
+      .about-section h1 {
+        color: var(--navy);
+        font-size: 1.7rem;
+        font-weight: 800;
+        margin-bottom: 2rem;
+      }
+
+      /* Scrollable card container */
+      .card-scroll-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .card-scroll-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 2rem;
+        padding: 2rem;
+        justify-content: flex-start;
+        align-items: stretch;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+
+      /* Hide scrollbar */
+      .card-scroll-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Card styles */
+      .about-card {
+        flex: 0 0 80%;
+        max-width: 800px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+        scroll-snap-align: center;
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        transition: opacity 0.3s ease, transform 0.3s ease,
+          background-color 0.3s ease;
+      }
+
+      .about-card.small {
+        flex: 0 0 60%;
+        opacity: 0.6;
+        background: #f5f5f5;
+        transform: scale(0.95);
+      }
+
+      .about-card h2 {
+        color: var(--navy);
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+      }
+
+      .about-card p {
+        color: var(--ink2);
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .about-card {
+          flex: 0 0 90%;
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="authArea">
+      <!-- Navbar -->
+      <header>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-logo-link" href="Home.html">
+      <img src="images/logo_white_gold_blue.png" alt="MCM home" class="brand-logo" />
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasic" class="navbar-menu">
+
+    <!-- LEFT SIDE NAVIGATION -->
+    <div class="navbar-start">
+      <a class="navbar-item" href="Home.html">Home</a>
+      <a class="navbar-item active-page" href="about.html">About</a>
+      <a class="navbar-item" href="Blog.html">Blog</a>
+      <a class="navbar-item" href="Contact.html">Contact</a>
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="navbar-end auth-container">
+
+      <!-- signed-out -->
+      <div class="navbar-item" data-auth="signed-out">
+        <div class="buttons">
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signin">Sign In</a>
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signup">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- signed-in -->
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <span id="navUserEmail" class="has-text-gold">Welcome</span>
+      </div>
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <a class="button cta-primary is-rounded" id="signOutBtn">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+      </header>
+
+      <main>
+        <section class="about-hero">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"
+            alt="Work placeholder"
+          />
+        </section>
+
+        <section class="about-section">
+          <h1>Hi, I'm Dawnell Kelly!</h1>
+          <div class="card-scroll-wrapper">
+            <div class="card-scroll-container" id="cardScroller">
+              <div class="about-card small">
+                <h2>What's MCM</h2>
+                <p>
+                  Military 2 Civilian Mastery (MCM) is a veteran-founded SaaS
+                  membership platform designed to help post-9/11 veterans
+                  rebuild identity, belonging, and purpose after transitioning
+                  out of the military. Our offer combines neuroscience-based
+                  frameworks, AI-powered coaching, and a private
+                  mastermind-style community.
+                </p>
+              </div>
+
+              <!-- Main card -->
+              <div class="about-card" id="mainCard">
+                <h2>Who is Dawnell Kelly?</h2>
+                <p>
+                  Helping Veterans Break the Civilian Stability Cycle™ + Make An
+                  Impact | Creator, Military 2 Civilian Mastery™ + The 5 Gears
+                  of Veteran Fulfillment™ | Host, The Optimized Veteran™ Podcast
+                  (Coming Soon) | USN Veteran
+                </p>
+              </div>
+
+              <!-- Right small card -->
+              <div class="about-card small">
+                <h2>Beyond MCM</h2>
+                <p>TO BE CONTINUED!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <script>
+        // Mobile menu toggle with null checks
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+              const expanded = burger.getAttribute("aria-expanded") === "true";
+              burger.setAttribute("aria-expanded", String(!expanded));
+            });
+          }
+        });
+      </script>
+      <script>
+        // Highlight the card closest to the viewport center
+        document.addEventListener("DOMContentLoaded", () => {
+          const scroller = document.getElementById("cardScroller");
+          if (!scroller) return;
+
+          const cards = Array.from(scroller.querySelectorAll(".about-card"));
+
+          const setUniformHeights = () => {
+            if (!cards.length) return;
+            cards.forEach((card) => {
+              card.style.minHeight = "";
+            });
+            const maxHeight = Math.max(
+              ...cards.map((card) => card.offsetHeight)
+            );
+            cards.forEach((card) => {
+              card.style.minHeight = `${maxHeight}px`;
+            });
+          };
+
+          const updateActiveCard = () => {
+            if (!cards.length) return;
+            const scrollerRect = scroller.getBoundingClientRect();
+            const center = scrollerRect.left + scrollerRect.width / 2;
+
+            let activeCard = cards[0];
+            let smallestDistance = Number.MAX_VALUE;
+
+            cards.forEach((card) => {
+              const cardRect = card.getBoundingClientRect();
+              const cardCenter = cardRect.left + cardRect.width / 2;
+              const distance = Math.abs(cardCenter - center);
+              if (distance < smallestDistance) {
+                smallestDistance = distance;
+                activeCard = card;
+              }
+            });
+
+            cards.forEach((card) => card.classList.add("small"));
+            activeCard.classList.remove("small");
+          };
+
+          // Set initial state and keep in sync on scroll/resize
+          setUniformHeights();
+          updateActiveCard();
+          scroller.addEventListener("scroll", () =>
+            window.requestAnimationFrame(updateActiveCard)
+          );
+          window.addEventListener("resize", () => {
+            setUniformHeights();
+            updateActiveCard();
+          });
+        });
+      </script>
+      <!-- Navbar toggle -->
+      <script>
+(function () {
+  try {
+    const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
+    const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
+
+    // Apply the class BEFORE HTML renders — prevents flicker
+    document.documentElement.classList.add(
+      mode === "signed-in"
+        ? "auth-cached-signed-in"
+        : "auth-cached-signed-out"
+    );
+
+    // Store email temporarily — do NOT touch DOM here
+    window.__MCM_EMAIL__ = cached?.email || null;
+
+  } catch (err) {
+    document.documentElement.classList.add("auth-cached-signed-out");
+  }
+})();
+</script>
+
+
+      <!-- Auth Modal -->
+      <div id="authModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title" id="modalTitle">Sign In</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Sign In -->
+            <form id="signInForm" style="display: block">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInPassword"
+                    class="input"
+                    type="password"
+                    placeholder="••••••"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Sign In
+              </button>
+
+              <p class="mt-3 has-text-centered">
+                Don't have an account?
+                <a id="switchToSignUp">Sign Up</a>
+              </p>
+            </form>
+
+            <!-- Sign Up -->
+            <form id="signUpForm" style="display: none">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpPassword"
+                    class="input"
+                    type="password"
+                    placeholder="At least 6 characters"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Create Account
+              </button>
+              <p class="mt-3 has-text-centered">
+                Already have an account?
+                <a id="switchToSignIn">Sign In</a>
+              </p>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer isyellow">
+        <div class="container">
+          <div class="content has-text-centered">
+            <p>
+              <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424
+              &nbsp;|&nbsp; 2025. All rights reserved.
+            </p>
+            <div class="social-icons mt-4">
+              <a
+                href="https://www.linkedin.com/in/dawnellkelly/"
+                class="has-text-white mr-4"
+                ><i class="fab fa-linkedin fa-lg"></i
+              ></a>
+
+              <a
+                href="https://www.youtube.com/@theoptimizedveteran"
+                target="_blank"
+                class="has-text-white"
+                ><i class="fab fa-youtube fa-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Firebase initialization -->
+      <script type="module" src="firebase.js"></script>
+
+      <!-- Centralized Authentication Controller -->
+      <script type="module" src="auth.js"></script>
+    </div>
+  </body>
+</html>

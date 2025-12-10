@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Contact MCM — Reclaim your identity. Realign your energy. Build your legacy—without leaving the 9–5."
+    />
+    <title>Contact Us | MCM</title>
+
+    <script>
+      (function () {
+        try {
+          const cached = JSON.parse(localStorage.getItem("mcm-auth-state") || "null");
+          const mode = cached?.mode === "signed-in" ? "signed-in" : "signed-out";
+          document.documentElement.classList.add(
+            mode === "signed-in" ? "auth-cached-signed-in" : "auth-cached-signed-out"
+          );
+          if (mode === "signed-in" && cached?.email) {
+            const el = document.getElementById("navUserEmail");
+            if (el) el.textContent = "Welcome, " + cached.email;
+          }
+        } catch (err) {
+          document.documentElement.classList.add("auth-cached-signed-out");
+        }
+      })();
+    </script>
+    <!-- Bulma -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="authArea">
+      <header>
+        <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-logo-link" href="Home.html">
+      <img src="images/logo_white_gold_blue.png" alt="MCM home" class="brand-logo" />
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasic" class="navbar-menu">
+
+    <!-- LEFT SIDE NAVIGATION -->
+    <div class="navbar-start">
+      <a class="navbar-item" href="Home.html">Home</a>
+      <a class="navbar-item" href="about.html">About</a>
+      <a class="navbar-item" href="Blog.html">Blog</a>
+      <a class="navbar-item active-page" href="Contact.html">Contact</a>
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="navbar-end auth-container">
+
+      <!-- signed-out -->
+      <div class="navbar-item" data-auth="signed-out">
+        <div class="buttons">
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signin">Sign In</a>
+          <a class="button cta-primary is-rounded" href="#auth" data-mode="signup">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- signed-in -->
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <span id="navUserEmail" class="has-text-gold">Welcome, User</span>
+      </div>
+      <div class="navbar-item" data-auth="signed-in" style="display: none;">
+        <a class="button cta-primary is-rounded" id="signOutBtn">Sign Out</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+      </header>
+
+      <!-- Hero Section -->
+      <section class="contact-hero">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-7">
+              <h1 class="contact-headline">Contact Us</h1>
+              <p class="contact-subcopy">
+                Fill out the form below if you have any questions, comments, or
+                would like to learn more about our services.
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSe-O-v8aUaHTDobjLIiaFgoIUV2y6bHVd1FqvlbvHlifUwJZA/viewform "
+                target="_blank"
+                class="cta-primary button"
+              >
+                Contact Form
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Information Section -->
+      <section class="section has-background-soft-gray">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-10">
+              <div class="columns is-multiline">
+                <!-- linkedin -->
+                <div class="column is-4">
+                  <div class="contact-card has-text-centered">
+                    <div class="contact-icon">
+                      <i
+                        class="fab fa-linkedin fa-lg"
+                        style="color: #0a66c2"
+                      ></i>
+                    </div>
+                    <h3 class="contact-method-title">Our Linkedin</h3>
+                    <p class="contact-method-desc">
+                      <a href="https://www.linkedin.com/in/dawnellkelly/"
+                        >in/dawnell-kelly</a
+                      >
+                    </p>
+                  </div>
+                </div>
+                <!-- Email -->
+                <div class="column is-4">
+                  <div class="contact-card has-text-centered">
+                    <div class="contact-icon" style="background-color: #4a5568">
+                      <i class="fas fa-envelope fa-lg" style="color: white"></i>
+                    </div>
+                    <h3 class="contact-method-title">Email Us</h3>
+                    <p class="contact-method-desc">
+                      <a href="hello@dawnellkelly.com">
+                        hello@dawnellkelly.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- YouTube Channel -->
+                <div class="column is-4">
+                  <div class="contact-card has-text-centered">
+                    <div class="contact-icon">
+                      <i
+                        class="fab fa-youtube fa-lg"
+                        style="color: #ff0000"
+                      ></i>
+                    </div>
+                    <h3 class="contact-method-title">YouTube Channel</h3>
+                    <p class="contact-method-desc">
+                      <a href="https://www.youtube.com/@theoptimizedveteran">
+                        Youtube Link
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>      
+
+      <!-- Auth Modal -->
+      <div id="authModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title" id="modalTitle">Sign In</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Sign In -->
+            <form id="signInForm" style="display: block">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signInPassword"
+                    class="input"
+                    type="password"
+                    placeholder="••••••"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Sign In
+              </button>
+              <p class="mt-3 has-text-centered">
+                Don't have an account?
+                <a id="switchToSignUp">Sign Up</a>
+              </p>
+            </form>
+
+            <!-- Sign Up -->
+            <form id="signUpForm" style="display: none">
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpEmail"
+                    class="input"
+                    type="email"
+                    placeholder="you@example.com"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-envelope"></i
+                  ></span>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    id="signUpPassword"
+                    class="input"
+                    type="password"
+                    placeholder="At least 6 characters"
+                  />
+                  <span class="icon is-small is-left"
+                    ><i class="fas fa-lock"></i
+                  ></span>
+                </div>
+              </div>
+              <button
+                class="button cta-primary is-fullwidth mt-4"
+                type="submit"
+              >
+                Create Account
+              </button>
+              <p class="mt-3 has-text-centered">
+                Already have an account?
+                <a id="switchToSignIn">Sign In</a>
+              </p>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer isyellow">
+        <div class="container">
+          <div class="content has-text-centered">
+            <p>
+              <strong class="has-text-white">MCM</strong> &copy; by Team 3 IS424
+              &nbsp;|&nbsp; 2025. All rights reserved.
+            </p>
+            <div class="social-icons mt-4">
+              <a
+                href="https://www.linkedin.com/in/dawnellkelly/"
+                class="has-text-white mr-4"
+                ><i class="fab fa-linkedin fa-lg"></i
+              ></a>
+
+              <a
+                href="https://www.youtube.com/@theoptimizedveteran"
+                target="_blank"
+                class="has-text-white"
+                ><i class="fab fa-youtube fa-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <script>
+        // Mobile menu toggle with null checks
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+              const expanded = burger.getAttribute("aria-expanded") === "true";
+              burger.setAttribute("aria-expanded", String(!expanded));
+            });
+          }
+        });
+      </script>
+      <!-- Navbar toggle -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const burger = document.querySelector(".navbar-burger");
+          const menu = document.getElementById("navbarBasic");
+          if (burger && menu) {
+            burger.addEventListener("click", () => {
+              burger.classList.toggle("is-active");
+              menu.classList.toggle("is-active");
+            });
+          }
+        });
+      </script>
+      <!-- Firebase initialization -->
+      <script type="module" src="firebase.js"></script>
+
+      <!-- Centralized Authentication Controller -->
+      <script type="module" src="auth.js"></script>
+    </div>
+  </body>
+</html>
